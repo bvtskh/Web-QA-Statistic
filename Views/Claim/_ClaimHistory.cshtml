@@ -1,0 +1,56 @@
+﻿
+@using FormProject.Database
+<div class="container-fluid shadow mt-4" style="width:100%">
+    <div class="card-body">
+        <p class="text-uppercase font-weight-bold mt-3 mb-3"><u>Lịch sử sửa đổi</u></p>
+        <br />
+
+        <ul class="StepProgress">
+            @{
+                foreach (Claim claim in ViewBag.histories)
+                {
+                    <li class="StepProgress-item">
+                        @if (claim.CanEdit == 1 && claim.IsNewest == 1)
+                        {
+                            if (claim.Id == Model.Id)
+                            {
+                                <a href="@Url.Action("Detail", "Claim", new { Id = claim.Id })">
+                                    <p class="pressed">@(string.Format("{0:d/M/yyyy HH:mm:ss}", claim.Modify_date))</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Detail", "Claim", new { Id = claim.Id })">
+                                    <p>@(string.Format("{0:d/M/yyyy HH:mm:ss}", claim.Modify_date))</p>
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            if (claim.Id == Model.Id)
+                            {
+                                <a href="@Url.Action("ClaimView", "Claim", new { Id = claim.Id })">
+                                    <p class="pressed">@(string.Format("{0:d/M/yyyy HH:mm:ss}", claim.Modify_date))</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("ClaimView","Claim",new { Id = claim.Id })">
+                                    <p>@(string.Format("{0:d/M/yyyy HH:mm:ss}", claim.Modify_date))</p>
+                                </a>
+                            }
+
+                        }
+
+                        @if (claim.ActionName != null && claim.Comment_reject != null)
+                        {
+                                <p class="text-warning">Claim bị Reject</p> 
+                        }
+
+                    </li>
+                }
+
+            }
+        </ul>
+    </div>
+</div>

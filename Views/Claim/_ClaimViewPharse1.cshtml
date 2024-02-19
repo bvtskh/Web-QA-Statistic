@@ -1,0 +1,144 @@
+﻿@using FormProject.Database
+@using FormProject.Controllers
+@model  FormProject.Database.Claim
+
+<div class="container-fluid shadow bg-common">
+    @Html.ValidationSummary()
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+        <br />
+        @Html.Partial("~/Views/Claim/_Header.cshtml")
+
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-3">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.No, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_No</label>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "input_material mt-3", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Subject</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="group_material">
+                    <input type="text" value="@(Model.User != null ? Model.User.Name : "")" class="input_material mt-3" readonly />
+                    <label class="label_material-fix">@Resource.Field_Create_by</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Customer, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Customer</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Model_name, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Model</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+
+                    @Html.TextBoxFor(m => m.Model_group, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Group_Model</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+                    <input type="date" name="Create_date"
+                           value="@Model.Create_dateStr"
+                           class="input_material mt-3" readonly>
+                    <label class="label_material-fix">@Resource.Field_Create_date</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Type, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Type</label>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-uppercase mt-3 mb-3 header-color"><u>@Resource.Title_Occur_Status</u></p>
+
+        <div class="group_material">
+            @Html.TextBoxFor(m => m.Occur_content, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+            <label class="label_material-fix">@Resource.Field_Occur_content</label>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Occur_date, new { @type = "datetime-local", @Value = String.Format("{0:s}", Model.Occur_date), @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Occur_date</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Occur_place, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Occur_place</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Person_detect, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Person_detect</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Number_NG, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Number_NG</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Number_test, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Number_test</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Occur_frequency, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                    <label class="label_material-fix">@Resource.Field_Occur_frequency</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="group_material">
+                    <input type="date" name="Date_make"
+                           value="@Model.Date_makeStr"
+                           class="input_material mt-3" readonly>
+                    <label class="label_material-fix">@Resource.Field_Date_make</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="group_material mt-3 p-3 rounded overflow-auto">
+            <label class="font-weight-bold">@Resource.Field_Image_NG</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Image_NG))
+        </div>
+        @Html.HiddenFor(m => m.Image_NG)
+
+        <div class="group_material mt-3 p-3">
+            @Html.TextBoxFor(m => m.Type_Form, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+            <label class="label_material-fix ml-3">@Resource.Field_Type_Form</label>
+        </div>
+        @Html.HiddenFor(m => m.Type_Form)
+    </div>
+</div>

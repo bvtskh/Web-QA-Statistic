@@ -1,0 +1,43 @@
+﻿@using FormProject.Models
+@model  FormProject.Models.EmailOutlook
+<html>
+<head>
+    <style>
+        body {
+            background-color: lightblue;
+            line-height: 0.5;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        p {
+            font-family: verdana;
+            font-size: 13px;
+        }
+
+        span {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Dear user,</p>
+    <p>There is an update request report to the cause- corrective action for the <span>QAYAI201224-00</span> (control number) sent to you.</p>
+    <p>Click under link to access to the deliverable, submit and review it for approval or rejection.</p>
+    <p> @Model.url
+    <p>If you need additional information or details, do not hesitate to contact:</p>
+    <p>Your Administrator: @Model.email</p>
+
+    <p>Có một yêu cầu cập nhật cho nguyên nhân và hành động khắc phục ngăn ngừa cho <span>QAYAI201224-00</span> đã được gửi cho bạn.</p>
+    <p>Nhấp vào liên kết dưới để truy cập vào có thể đệ trình, gửi và xem xét, để phê duyệt hoặc từ chối nó.</p>
+    <p> @Model.url</p>
+    <p>Nếu bạn cần thêm thông tin hoặc chi tiết, đừng ngần ngại liên hệ: </p>
+    <p>Địa chỉ của người khởi tạo: @Model.email</p>
+
+</body>
+</html>
+

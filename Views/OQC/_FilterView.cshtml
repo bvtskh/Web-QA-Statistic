@@ -1,0 +1,58 @@
+﻿
+
+<div class="border p-2 ">
+    <p class="font-weight-bold">Select</p>
+    <div class="form-inline">
+
+        <select class="form-control mr-1" id="filter_select">
+            <option>Area</option>
+            <option>Project</option>
+            <option>Model</option>
+            <option>GroupModel</option>
+        </select>
+        <input list="list-model" class="form-control" placeholder="Start typing..." id="filter_value_model">
+        <datalist id="list-model">
+            @foreach (var m in ViewBag.Model)
+            {
+                <option>@m</option>
+            }
+            <option>ALL</option>
+        </datalist>
+        <input list="list-customer" class="form-control" placeholder="Start typing..." id="filter_value_customer">
+        <datalist id="list-customer">
+            @foreach (var cus in ViewBag.Customer)
+            {
+                <option>@cus</option>
+            }
+            <option>ALL</option>
+        </datalist>
+        <input list="list-area" value="" class="form-control" placeholder="Start typing..." id="filter_value_area">
+        <datalist id="list-area">
+            <option>AUTO</option>
+            <option>OA</option>
+            <option>ID</option>
+            <option>ALL</option>
+        </datalist>
+
+        <input list="list-group" value="" class="form-control" placeholder="Start typing..." id="filter_value_group">
+        <datalist id="list-group">
+            @foreach (var m in ViewBag.GroupModel)
+            {
+                <option>@m</option>
+            }
+            <option>ALL</option>
+        </datalist>
+
+    </div>
+</div>
+
+<div class="border p-2 ml-2">
+    <p class="font-weight-bold">MONTH TO DATE</p>
+    <div class="form-inline">
+        <input type="date" class="form-control" id="filter_date_from" />
+        <span class="p-2">Đến</span>
+        <input type="date" class="form-control" id="filter_date_to" />
+        <button type="button" class="btn btn-primary ml-2 text-white" id="btn_filter" onclick="loadData()">Lọc</button>
+    </div>
+</div>
+

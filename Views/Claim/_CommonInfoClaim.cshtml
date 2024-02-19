@@ -1,0 +1,44 @@
+﻿@model FormProject.Database.Claim
+<div class="container-fluid shadow mt-5 bg-common">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Common_Info</u></p>
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                <div class="group_material">
+                    <input type="text" value="@string.Format("{0:d MM yyyy HH:mm}", Model.Modify_date)" class="input_material mt-3" disabled />
+                    <label class="label_material-fix">@Resource.Field_Modify_date</label>
+                </div>
+            </div>
+            @if (Model.User1 != null)
+            {
+                <div class="col-sm">
+                    <div class="group_material">
+                        @Html.TextBoxFor(m => m.User1.Name, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                        <label class="label_material-fix">@Resource.Field_Modify_by</label>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        @if (Model != null && Model.Comment_reject != null)
+        {
+            @*@Html.HiddenFor(m => m.Comment_reject)*@
+            <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+                <label>@Resource.Field_Comment_reject</label>
+                <hr />
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Comment_reject))
+            </div>
+        }
+    </div>
+</div>
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.Status_approval)
+@Html.HiddenFor(m => m.Due_date)
+@Html.HiddenFor(m => m.Status)
+@Html.HiddenFor(m => m.Modify_by)
+@Html.HiddenFor(m => m.Modify_date)

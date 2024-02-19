@@ -1,0 +1,140 @@
+﻿@using Newtonsoft.Json
+@using FormProject.Database
+@using FormProject.Controllers.Helper
+@{
+    ViewBag.Title = "MTDQuantity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table {
+        font-size: 10px;
+    }
+
+        table tr, td {
+            color: #111;
+        }
+
+    .main-stop {
+        stop-color: red;
+    }
+
+    .alt-stop {
+        stop-color: white;
+    }
+</style>
+<div class="container-fluid">
+    <div class="loading middle">
+        <img src="~/Images/loader4.gif" />
+    </div>
+    <div class="row mt-5">
+        <div class="border p-2 ml-2">
+            <div class="form-inline">
+                <button type="button" class="btn border  mr-2 chart_view bg-secondary1  text-black"> Ngày</button>
+                <button type="button" class="btn border  mr-2 chart_view text-black"> Tuần</button>
+                <button type="button" class="btn border  mr-2  chart_view text-black">Tháng </button>
+                <button type="button" class="btn border  mr-2  chart_view text-black"> Năm</button>
+            </div>
+        </div>
+        @Html.Partial("~/Views/OQC/_FilterView.cshtml")
+
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">TOTAL CHECK(pcs)</th>
+                        <th scope="col">TARGET(ppm)</th>
+                        <th scope="col">NG QTY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" id="totalCheck">
+                        </th>
+                        <td id="targetPPM"></td>
+                        <td id="totalNG"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <p class="font-weight-bold">Quantity Index : <span id="actualPPM"> </span>ppm</p>
+            <hr />
+            <div class="row">
+                <div class="col-2 bg-primary text-white" id="actualPercent">65%</div>
+                <div class="col">
+                    <svg height="10" width="200">
+                        <rect width="100" height="10" style="fill:#0275d8" id="actualDraw" />
+                    </svg>
+                </div>
+                <div class="col-2 text-black">Actual</div>
+            </div>
+            <div class="row">
+                <div class="col-2 bg-warning text-white">100%</div>
+                <div class="col">
+                    <svg height="10" width="200">
+                        <rect width="100" height="10" style="fill:#0275d8" />
+                    </svg>
+                </div>
+                <div class="col-2 text-black">Target</div>
+            </div>
+            <br />
+            <p class="font-weight-bold">Result</p>
+            <hr />
+            <svg width="400" height="110">
+                <rect width="100" height="100" style="fill:#c5e1a5" id="targetBg" />
+                <text x="37" y="55" fill="green" font-weight="bold" id="targetResult">OK</text>
+            </svg>
+        </div>
+        <div class="col-9">
+
+            <div id="chartMtdQuantity" style="height: 370px; width: 800px;"></div>
+        </div>
+    </div>
+    <div class="form-check-inline d-inline ">
+        <input class="form-check-input" type="checkbox" value="true" id="check_oqc1" onchange="onChangeCheckStation()">
+        <label class="form-check-label font-weight-normal" for="check_oqc1">
+            OQC1
+        </label>
+    </div>
+    <div class="form-check-inline d-inline ">
+        <input class="form-check-input" type="checkbox" value="true" id="check_oqc2" onchange="onChangeCheckStation()">
+        <label class="form-check-label font-weight-normal" for="check_oqc2">
+            OQC2
+        </label>
+    </div>
+    <div class="form-check-inline d-inline">
+        <input class="form-check-input" type="checkbox" value="true" id="check_csl" onchange="onChangeCheckStation()">
+        <label class="form-check-label font-weight-normal" for="check_csl">
+            CSL
+        </label>
+    </div>
+    @*<div class="checkbox">
+        <label style="font-size:12px"><input id="ckbChangeJp" type="checkbox" value="">Change To JP/VI</label>
+    </div>*@
+    <div class=" row mt-10">
+        <div class="">
+            <table class="table table-bordered" id="table_weekly">
+                <thead id="thead">
+
+                </thead>
+
+                <tbody id="body">
+                    <tr>
+                        <th scope="row">
+
+                        </th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    @section scripts{
+        <script src="@Url.ContentVersioned("~/Scripts/custom/moment","js")"></script>
+        <script src="@Url.ContentVersioned("~/Scripts/custom/oqccharmtdquantity","js")"></script>
+        <script src="~/Scripts/canvas/canvasjs.min.js"></script>
+    }

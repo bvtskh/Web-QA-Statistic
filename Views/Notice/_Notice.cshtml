@@ -1,0 +1,125 @@
+﻿@using FormProject.Database;
+@model List<Notice>
+@{
+    var bg = "";
+}
+<h6 class="dropdown-header">
+    Thông báo
+</h6>
+@if (Model.Count < 4)
+{
+    foreach (var notice in Model)
+    {
+        if (notice.IsRead == 1)
+        {
+            bg = "bg-highlight";
+        }
+        else
+        {
+            bg = "";
+        }
+        var href = "#";
+        if(notice.Claim != null)
+        {
+            if (notice.Claim.CanEdit == 1)
+            {
+                href = Url.Action("Detail", "Claim", new { Id = notice.ClaimId });
+            }
+            else
+            {
+                href = Url.Action("ClaimView", "Claim", new { Id = notice.ClaimId });
+            }
+        }
+
+        <a class="dropdown-item d-flex align-items-center @bg" href="@href">
+            <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                    <i class="fas fa-file-alt text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="small text-gray-500">@notice.SendDateStr</div>
+                <span class="font-weight-bold">@notice.NoticeContent</span>
+            </div>
+        </a>
+    }
+}
+else
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if (Model[i].IsRead == 1)
+        {
+            bg = "bg-highlight";
+        }
+        else
+        {
+            bg = "";
+        }
+        var href = "#";
+        if (Model[i].Claim != null)
+        {
+            if (Model[i].Claim.CanEdit == 1)
+            {
+                href = Url.Action("Detail", "Claim", new { Id = Model[i].ClaimId });
+            }
+            else
+            {
+                href = Url.Action("ClaimView", "Claim", new { Id = Model[i].ClaimId });
+            }
+        }
+        <a class="dropdown-item d-flex align-items-center @bg" href="@href">
+            <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                    <i class="fas fa-file-alt text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="small text-gray-500">@Model[i].SendDateStr</div>
+                <span class="font-weight-bold">@Model[i].NoticeContent</span>
+            </div>
+        </a>
+    }
+    <div class="hide-notice">
+        @for (int i = 3; i < Model.Count; i++)
+        {
+            if (Model[i].IsRead == 1)
+            {
+                bg = "bg-highlight";
+            }
+            else
+            {
+                bg = "";
+            }
+            var href = "#";
+            if (Model[i].Claim != null)
+            {
+                if (Model[i].Claim.CanEdit == 1)
+                {
+                    href = Url.Action("Detail", "Claim", new { Id = Model[i].ClaimId });
+                }
+                else
+                {
+                    href = Url.Action("ClaimView", "Claim", new { Id = Model[i].ClaimId });
+                }
+            }
+            <a class="dropdown-item d-flex align-items-center @bg" href="@href">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">@Model[i].SendDateStr</div>
+                    <span class="font-weight-bold">@Model[i].NoticeContent</span>
+                </div>
+            </a>
+        }
+    </div>
+    <a id="view_all_notice" class="dropdown-item text-center small text-gray-500" onclick="return ViewAllNotice()">Xem tất cả</a>
+}
+
+
+
+
+

@@ -1,0 +1,206 @@
+﻿@using FormProject.Database;
+@using FormProject.Models;
+@using FormProject.Controllers.Helper;
+@model  FormProject.Database.Claim
+@{
+    ViewBag.Title = "ClaimDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var layout = "col-md-10";
+    if (ViewBag.histories == null)
+    {
+        layout = "col-md-12";
+    }
+}
+
+<div class="@(layout) p-2 pl-3">
+    @using (Html.BeginForm("Detail", "Claim", FormMethod.Post, new { id = "detail-form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken();
+
+        if (Model == null || Model.Status_approval < Constants.Status_Create || Model.Status_approval == null)
+        {
+            @Html.Partial("~/Views/Claim/_ClaimDetailPharse1.cshtml", Model);
+
+            <br />
+            if (Model != null && (Model.Type_Form == null || Model.Type_Form == FormType.FIVE_WHY))
+            {
+                @Html.Partial("~/Views/Claim/_ClaimViewPhare2.cshtml", Model)
+            }
+            else if (Model != null && Model.Type_Form == FormType.REPORT)
+            {
+                @Html.Partial("~/Views/Claim/_ClaimViewReport.cshtml", Model)
+            }
+        }
+        else
+        {
+            @Html.Partial("~/Views/Claim/_ClaimViewPharse1.cshtml", Model)
+            <br />
+            if (Model.Type_Form == null || Model.Type_Form == FormType.FIVE_WHY)
+            {
+                @Html.Partial("~/Views/Claim/_ClaimDetailPharse2.cshtml", Model)
+            }
+            else if (Model.Type_Form == FormType.REPORT)
+            {
+                @Html.Partial("~/Views/Claim/_ClaimDetailReport.cshtml", Model)
+            }
+        }
+        if (Model != null && Model.Modify_date != null)
+        {
+            @Html.Partial("~/Views/Claim/_CommonInfoClaim.cshtml", Model);
+        }
+        @Html.HiddenFor(m => m.Status_approval)
+        @Html.HiddenFor(m => m.Next_Action_by)
+        <div class="container-fluid  m-5">
+            @if (Model != null && Model.NextStep != null)
+            {
+                @Html.HiddenFor(m => m.NextStep.Id, new { id = "next-step" })
+            }
+            <br />
+            @if (ViewBag.Steps != null)
+            {
+                foreach (Process process in ViewBag.Steps)
+                {
+                    <input type="hidden" class="@process.Id" value="@process.Name">
+                }
+            }
+            @if (ViewBag.ProcessList != null)
+            {
+                if (Model != null && Model.Status_approval > Constants.Status_Init)
+                {
+                    <select id="ProcessList" class="form-control" required disabled>
+                        @foreach (ProcessList process in ViewBag.ProcessList)
+                        {
+                            <option name="@process.Process" value="@process.Id">@process.DisplayName</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <select id="ProcessList" class="form-control" required>
+                        <option value="">Chọn Process</option>
+                        @foreach (ProcessList process in ViewBag.ProcessList)
+                        {
+                            <option name="@process.Process" value="@process.Id">@process.DisplayName</option>
+                        }
+                    </select>
+                }
+
+            }
+            <br />
+            <br />
+            <div id="steps-form-detail" class="steps-form">
+                <div id="step-form" class="steps-row setup-panel">
+                </div>
+            </div>
+            @if (ViewBag.Submitors != null)
+            {
+                <br />
+                <div id="submitors" class="container-fluid">
+                    <input class="form-control" id="searchUser" type="text" placeholder="Tìm kiếm">
+                    <br>
+                    <ul class="list-group" id="listUser">
+                        @foreach (var user in ViewBag.Submitors)
+                        {
+                            if (ViewBag.listExcept == null)
+                            {
+                                <li class="list-group-item form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" data-text="@user.DisplayName" name="@user.Id">@user.DisplayName
+                                    </label>
+                                </li>
+                            }
+                            else
+                            {
+                                if (!ViewBag.listExcept.Contains(user.Id))
+                                {
+                                    <li class="list-group-item form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" data-text="@user.DisplayName" name="@user.Id">@user.DisplayName
+                                        </label>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="list-group-item form-check-inline hide">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" data-text="@user.DisplayName" name="@user.Id" readonly>@user.DisplayName
+                                        </label>
+                                    </li>
+                                }
+                            }
+
+
+                        }
+                    </ul>
+                </div>
+            }
+
+            @Html.HiddenFor(m => m.Process, new { id = "process" })
+            @if (Model != null && Model.ProcessListId != 0)
+            {
+                @Html.HiddenFor(m => m.ProcessListId, new { id = "processListId" })
+
+            }
+            else
+            {
+                <input id="processListId"
+                       name="processListId"
+                       type="hidden"
+                       value="@ViewBag.ProcessListId" />
+            }
+            @Html.HiddenFor(m => m.ActionName)
+            @Html.ValidationMessage("Error", new { @class = "text-danger", id = "error" })
+            <br />
+            <input type="button" value="Save" class="btn btn-secondary mt-3" name="draft" id="detail-draft" />
+
+            @if (Model != null && Model.NextStep != null)
+            {
+
+                <input type="button" value="@Model.NextStep.Name" class="btn btn-info mt-3 text-white" id="detail-save" />
+                if (Model.AllPreviousStep.Count > 0)
+                {
+                    <div class="d-inline ml-3">
+                        <button type="button" class="btn btn-link mt-3" onclick="return ShowFormReject()">Bạn muốn Reject &rarr; </button>
+                    </div>
+                }
+            }
+            else
+            {
+                <input type="button" value="Create" class="btn btn-info mt-3 text-white" id="detail-save" />
+            }
+            @if (Model != null && Model.AllPreviousStep.Count > 0)
+            {
+                <div class="form-reject mt-3">
+                    @Html.DropDownList("SteptToReject", new SelectList(Model.AllPreviousStep, "Id", "DisplayName"), Resource.Select_Step_To_Reject, new { @class = "form-control mt-3" })
+
+                    <div class="group_material mt-3">
+                        <label class="">@Resource.Field_Comment_reject</label>
+                        @Html.ValidationMessageFor(m => m.Comment_reject, "", new { @class = "text-danger" })
+                        <textarea class="form-control mt-3"
+                                  id="Comment_reject"
+                                  name="Comment_reject"
+                                  rows="4"
+                                  cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Comment_reject))
+                            </textarea>
+                    </div>
+                    <input type="button" value="Reject" name="reject" class="btn btn-danger mt-3 text-white" id="detail-reject" />
+                    @Html.HiddenFor(m => m.ActionName)
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@if (ViewBag.histories != null)
+{
+    <div class="col-md-2">
+        @Html.Partial("~/Views/Claim/_ClaimHistory.cshtml")
+    </div>
+}
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.ContentVersioned("~/Scripts/custom/claim_detail","js")"></script>
+}

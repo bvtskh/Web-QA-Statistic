@@ -1,0 +1,292 @@
+﻿@using FormProject.Database;
+@model  FormProject.Database.Claim
+<div class="container-fluid shadow bg-common">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+        <br />
+        @Html.Partial("~/Views/Claim/_Header.cshtml")
+
+        <br />
+        <br />
+        <div class="row">
+            @if (Model != null)
+            {
+                <div class="col-sm">
+                    @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
+                    <div class="group_material">
+                        @if (ViewBag.ErrorDupplicateNo == null)
+                        {
+                            @Html.TextBoxFor(m => m.No, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(m => m.No, new { @class = "input_material mt-3", @required = "required" })
+                        }
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="label_material">@Resource.Field_No</label>
+                    </div>
+                </div>
+                if (Model.User != null)
+                {
+                    <div class="col-sm">
+                        <div class="group_material">
+                            <input type="text" value="@Model.User.Name" class="input_material mt-3" required readonly />
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label class="label_material">@Resource.Field_Create_by</label>
+                        </div>
+                    </div>
+
+                }
+
+                @Html.HiddenFor(m => m.Create_by)
+            }
+            else
+            {
+                <div class="col-sm">
+                    @Html.ValidationMessageFor(m => m.No, "", new { @class = "text-danger" })
+                    <div class="group_material">
+                        @Html.TextBoxFor(m => m.No, new { @class = "input_material mt-3", @required = "required" })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="label_material">@Resource.Field_No</label>
+                    </div>
+                </div>
+            }
+                <div class="col-sm">
+                    @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+                    @*<div class="group_material">
+                        @Html.TextBoxFor(m => m.Subject, new { @class = "input_material mt-3", @required = "required" })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="label_material">@Resource.Field_Subject</label>
+                    </div>*@
+                    <div class="select">
+                        <select class="select-text" name="Subject" required>
+                            @foreach (var subject in SUBJECT.LIST)
+                            {
+                                <option value="@subject">@subject</option>
+                            }
+                        </select>
+                        <label class="select-label">@Resource.Field_Subject</label>
+                    </div>
+                </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Customer, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Customer, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Customer</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Model_name, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Model_name, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Model</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Model_group, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Model_group, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Group_Model</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Create_date, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Create_date, new { @type = "date", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @class = "input_material mt-3", placeholder = Resource.Field_Create_date, @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Create_date</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+
+                <div class="select">
+                    <select class="select-text" name="Type" required>
+                        @if (Model != null && Model.Type != null)
+                        {
+                            if (Model.Type == @Resource.Type_Normal)
+                            {
+                                <option value="@Resource.Type_Normal" selected>@Resource.Type_Normal</option>
+                                <option value="@Resource.Type_Serious">@Resource.Type_Serious</option>
+                                <option value="@Resource.Type_abnormal">@Resource.Type_abnormal</option>
+                            }
+                            else if (Model.Type == Resource.Type_Serious)
+                            {
+                                <option value="@Resource.Type_Normal">@Resource.Type_Normal</option>
+                                <option value="@Resource.Type_Serious" selected>@Resource.Type_Serious</option>
+                                <option value="@Resource.Type_abnormal">@Resource.Type_abnormal</option>
+
+                            }
+                            else
+                            {
+                                <option value="@Resource.Type_Normal">@Resource.Type_Normal</option>
+                                <option value="@Resource.Type_Serious">@Resource.Type_Serious</option>
+                                <option value="@Resource.Type_abnormal" selected>@Resource.Type_abnormal</option>
+
+                            }
+                        }
+                        else
+                        {
+                            <option value="@Resource.Type_Normal">@Resource.Type_Normal</option>
+                            <option value="@Resource.Type_Serious">@Resource.Type_Serious</option>
+                            <option value="@Resource.Type_abnormal">@Resource.Type_abnormal</option>
+
+                        }
+                    </select>
+                    <label class="select-label">@Resource.Field_Type</label>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Occur_Status</u></p>
+
+        <div class="row mt-3">
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Occur_content, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Occur_content, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Occur_content</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Occur_date, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @if (Model != null && Model.Occur_date != null)
+                    {
+                        @Html.TextBoxFor(m => m.Occur_date, new { @type = "datetime-local", @Value = String.Format("{0:s}", Model.Occur_date), @class = "input_material mt-3", @required = "required" })
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(m => m.Occur_date,
+                      new { @type = "datetime-local",
+                          @Value = String.Format("{0:s}", DateTime.Now),
+                          @class = "input_material mt-3", placeholder = Resource.Field_Create_date, @required = "required" })
+                    }
+
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Occur_date</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Occur_place, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Occur_place, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Occur_place</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Person_detect, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Person_detect, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Person_detect</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Number_NG, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Number_NG, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Number_NG</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Number_test, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Number_test, new { @class = "input_material mt-3", @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Number_test</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Occur_frequency, "", new { @class = "text-danger" })
+                <div class="select">
+                    <select class="select-text" name="Occur_frequency" required>
+                        @if (Model != null && Model.Occur_frequency != null)
+                        {
+                            if (Model.Occur_frequency == Resource.Frequence_occur_First)
+                            {
+                                <option value="@Resource.Frequence_occur_First" selected>@Resource.Frequence_occur_First</option>
+                                <option value="@Resource.Frequence_occur_recur">@Resource.Frequence_occur_recur</option>
+                            }
+                            else
+                            {
+                                <option value="@Resource.Frequence_occur_First">@Resource.Frequence_occur_First</option>
+                                <option value="@Resource.Frequence_occur_recur" selected>@Resource.Frequence_occur_recur</option>
+
+                            }
+                        }
+                        else
+                        {
+                            <option value="@Resource.Frequence_occur_First">@Resource.Frequence_occur_First</option>
+                            <option value="@Resource.Frequence_occur_recur">@Resource.Frequence_occur_recur</option>
+                        }
+
+                    </select>
+                    <label class="select-label">@Resource.Field_Occur_frequency</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                @Html.ValidationMessageFor(m => m.Date_make, "", new { @class = "text-danger" })
+                <div class="group_material">
+                    @Html.TextBoxFor(m => m.Date_make, new { @type = "date", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @class = "input_material mt-3", placeholder = Resource.Field_Create_date, @required = "required" })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label_material">@Resource.Field_Date_make</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="group_material mt-3">
+            <label class="font-weight-bold">@Resource.Field_Image_NG</label>
+            @Html.ValidationMessageFor(m => m.Image_NG, "", new { @class = "text-danger" })
+            @{
+                var imageNG = Model != null ? Model.Image_NG : "";
+            }
+            <textarea class="form-control mt-5"
+                      id="Image_NG"
+                      name="Image_NG"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(imageNG))
+            </textarea>
+        </div>
+        <br />
+        <div class="group_material mt-3">
+            @Html.ValidationMessageFor(m => m.Type_Form, "", new { @class = "text-danger" })
+            <div class="select">
+                <select class="select-text" name="Type_Form" required>
+                    <option value="@FormType.FIVE_WHY">@FormType.FIVE_WHY</option>
+                    <option value="@FormType.REPORT">@FormType.REPORT</option>
+                </select>
+                <label class="select-label">@Resource.Field_Type_Form</label>
+            </div>
+        </div>
+
+    </div>
+</div>

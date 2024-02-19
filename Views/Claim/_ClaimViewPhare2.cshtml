@@ -1,0 +1,179 @@
+﻿@model FormProject.Database.Claim
+<div class="container-fluid shadow bg-common">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Understand_Issus</u></p>
+        <br />
+        @Html.HiddenFor(m => m.Confirm_artifact)
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            <label class="font-weight-bold">@Resource.Field_Confirm_artifact</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Confirm_artifact))
+        </div>
+
+        @Html.HiddenFor(m => m.Point_change)
+        @Html.HiddenFor(m => m.Retest)
+        @Html.HiddenFor(m => m.Confirm_factor)
+        @Html.HiddenFor(m => m.Analysis_factor)
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            <label>@Resource.Field_Analysis_factor</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Analysis_factor))
+        </div>
+
+        <div class="group_material">
+            @Html.TextBoxFor(m => m.Classify4M, new { @class = "input_material mt-3", @required = "required", @readonly = "readonly" })
+            <label class="label_material-fix">@Resource.Field_Classify4M</label>
+        </div>
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Trace_Reason</u></p>
+        <br />
+        @Html.HiddenFor(m => m.Reason_occur)
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            <label>@Resource.Field_Reason_occur</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Reason_occur))
+        </div>
+        <br />
+        @Html.HiddenFor(m => m.Reason_error)
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            <label>@Resource.Field_Reason_error</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Reason_error))
+        </div>
+        @Html.HiddenFor(m => m.Step_occur)
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            <label>@Resource.Field_Step_occur</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Step_occur))
+        </div>
+
+
+        <br />
+        <p class="text-uppercase font-weight-bold mt-3 header-color"><u>@Resource.Title_Strategy</u></p>
+        <br />
+        @Html.HiddenFor(m => m.Strategy_IsPokayoke)
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" id="is_pokayoke" disabled>
+            <label for="is_pokayoke">@Resource.Label_IsPokayok</label>
+        </div>
+        @Html.HiddenFor(m => m.Strategy_temp)
+        <div class="group_material mt-3 p-3 rounded overflow-auto">
+            <label>@Resource.Field_Strategy_temp</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Strategy_temp))
+        </div>
+
+        @Html.HiddenFor(m => m.Strategy_longtime)
+        <br />
+        <div class="group_material mt-3 p-3 rounded overflow-auto">
+            <label>@Resource.Field_Strategy_longtime</label>
+            <hr />
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Strategy_longtime))
+        </div>
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Strategy_follow</u></p>
+        <br />
+        @Html.HiddenFor(m => m.Strategy_follow)
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Strategy_follow))
+        </div>
+        <br />
+        @Html.HiddenFor(m => m.Response_occur_place)
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Response_Occur_place</u></p>
+        <br />
+        <table class="text-black">
+            <tr style="font-size:18px;">
+                <th scope="col">@Resource.Select (@Resource.Doc_Type)</th>
+                <th scope="col">@Resource.Doc_Name</th>
+                <th scope="col">@Resource.Doc_No</th>
+                <th scope="col">@Resource.Plan</th>
+                <th scope="col">@Resource.Infact</th>
+                <th scope="col">@Resource.PIC</th>
+            </tr>
+
+            @{
+                var text = "";
+                for (int i = 1; i <= 8; i++)
+                {
+                    if (i == 1)
+                    {
+                        text = DocumentType.BANVE;
+                    }
+                    else if (i == 2)
+                    {
+                        text = DocumentType.BOM;
+                    }
+                    else if (i == 3)
+                    {
+                        text = DocumentType.SODO_QC;
+                    }
+                    else if (i == 4)
+                    {
+                        text = DocumentType.FMEA;
+                    }
+                    else if (i == 5)
+                    {
+                        text = DocumentType.CONTROL_PLAN;
+                    }
+                    else if (i == 6)
+                    {
+                        text = DocumentType.QUYTRINH;
+                    }
+                    else if (i == 7)
+                    {
+                        text = DocumentType.TIEUCHUANTHAOTAC;
+                    }
+                    else if (i == 8)
+                    {
+                        text = DocumentType.KHAC;
+                    }
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" id="@("res_"+i+"_select")" disabled>
+                                <label for="@("res_"+i+"_select")">@text</label>
+                            </div>
+                        </td>
+                        <td>
+                            <textarea class="no-border bg-common"
+                                      rows="2"
+                                      id="@("res_"+i+"_docname")"
+                                      cols="20" disabled></textarea>
+                        </td>
+                        <td>
+                            <textarea class="no-border bg-common"
+                                      rows="2"
+                                      id="@("res_"+i+"_docno")"
+                                      cols="20" disabled></textarea>
+                        </td>
+                        <td>
+                            <textarea class="no-border bg-common"
+                                      rows="2"
+                                      id="@("res_"+i+"_plan")"
+                                      cols="20" disabled></textarea>
+                        </td>
+                        <td>
+                            <textarea class="no-border bg-common"
+                                      rows="2"
+                                      id="@("res_"+i+"_infact")"
+                                      cols="20" disabled></textarea>
+                        </td>
+                        <td>
+                            <textarea class="no-border bg-common"
+                                      rows="2"
+                                      id="@("res_"+i+"_pic")"
+                                      cols="20" disabled></textarea>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+        <hr />
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>Đính kèm file</u></p>
+        <div class="group_material mt-3 bg-common p-3 rounded overflow-auto">
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.FileAttach))
+        </div>
+    </div>
+</div>

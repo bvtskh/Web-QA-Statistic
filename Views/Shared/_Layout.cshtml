@@ -1,0 +1,230 @@
+﻿@using FormProject.Database
+@using FormProject.Controllers.Helper
+@{
+    /**/
+
+    User user = (User)HttpContext.Current.Session["User"];
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>UMC Việt Nam</title>
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon" />
+    <link href="~/Content/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- Custom fonts for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/sb-admin-2.min.css" rel="stylesheet" />
+
+    @*<link href="~/Content/css/common.css" rel="stylesheet" />*@
+    <link href="@Url.ContentVersioned("~/Content/css/common","css")" rel="stylesheet" />
+
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="nav-link" href="#">
+                <img class="img-profile" src="~/Resources/logo.png">
+                @if (HttpContext.Current.Session["User"] != null)
+                {
+                    <span class="mr-2 d-none d-lg-inline text-white small ml-3">@(FormProject.Resource.Hello + " " + user.Name)</span>
+                }
+
+            </a>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Cài đặt tài khoản
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+
+            @if (user != null)
+            {
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="@Url.Action("Logout", "Home")">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>@FormProject.Resource.Logout</span>
+                    </a>
+
+                </li>
+                if (user.Role != null && user.Role.Name == Constants.Role_Admin)
+                {
+
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="@Url.Action("Register", "Home")">
+                            <i class="fas fa-fw fa-user-plus"></i>
+                            <span>@FormProject.Resource.CreateNewUser</span>
+                        </a>
+                    </li>
+
+                }
+
+                <hr class="sidebar-divider">
+
+                <div class="sidebar-heading">
+                    Thông tin Claim
+                </div>
+
+
+                <div class="list-filter-claim">
+                    <li class="nav-item" name="@Constants.All">
+                        <a class="nav-link" href="@Url.Action("Index", "Claim",new { filter = Constants.All})">
+                            <i class="fas fa-fw fa-home"></i>
+                            <span>Tất cả</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" name="@Constants.Filter_Draft">
+                        <a class="nav-link collapsed" href="@Url.Action("Index", "Claim",new { filter = Constants.Filter_Draft})">
+                            <i class="fas fa-fw fa-folder"></i>
+                            <span>@FormProject.Resource.Draft</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" name="@Constants.Filter_WaitingMe">
+                        <a class="nav-link" href="@Url.Action("Index", "Claim",new { filter = Constants.Filter_WaitingMe})">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <span>
+                                @FormProject.Resource.WattingMe
+                            </span>
+                            @{
+                                if (HttpContext.Current.Application["NumberWaitMe"] != null)
+                                {
+                                    var numberWait = (int)HttpContext.Current.Application["NumberWaitMe"];
+                                    if (numberWait > 0)
+                                    {
+                                        <span class="badge badge-danger badge-counter" style="font-size:10px">@(numberWait + "+")</span>
+                                    }
+                                }
+                            }
+
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item" name="@Constants.Filter_MyClaim">
+                        <a class="nav-link" href="@Url.Action("Index", "Claim",new { filter = Constants.Filter_MyClaim})">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>@FormProject.Resource.MyClaim</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" name="@Constants.Claim_Chart">
+                        <a class="nav-link" href="@Url.Action("Chart", "Claim")">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>@FormProject.Resource.Chart</span>
+                        </a>
+                    </li>
+                </div>
+                <!-- Nav Item - Dashboard -->
+
+
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="@Url.Action("Login", "Home")">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>@FormProject.Resource.Login</span>
+                    </a>
+
+                </li>
+
+            }
+            <input type="hidden" value="@ViewBag.Filter" id="filter" />
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="sidebar-heading">
+                Thông tin OQC
+            </div>
+            <li class="nav-item" name="@Constants.OQCChart">
+                <a class="nav-link" href="@Url.Action("OQCChart", "OQC")">
+                    <i class="fas  fa-chart-bar"></i>
+
+                    <span>Biểu đồ Dyanmic data</span>
+                </a>
+
+
+            </li>
+            <li class="nav-item" name="@Constants.OQCChartAreaOverview">
+                <a class="nav-link" href="@Url.Action("OQCChartAreaOverview", "OQC")">
+                    <i class="fas  fa-chart-bar"></i>
+
+                    <span>Biểu đồ Area Overview</span>
+                </a>
+
+
+            </li>
+            <li class="nav-item" name="@Constants.MTDQuantity">
+                <a class="nav-link" href="@Url.Action("MTDQuantity", "OQC")">
+                    <i class="fas  fa-chart-bar"></i>
+
+                    <span>Biểu đồ MTD Quantity</span>
+                </a>
+
+
+            </li>
+            <li class="nav-item" name="@Constants.OQCChartDefection">
+                <a class="nav-link" href="@Url.Action("OQCChartDefection", "OQC")">
+                    <i class="fas  fa-chart-bar"></i>
+
+                    <span>Biểu đồ Defection</span>
+                </a>
+            </li>
+            <li class="nav-item" name="@Constants.OQCChartPerformance">
+                <a class="nav-link" href="@Url.Action("OQCChartPerformance", "OQC")">
+                    <i class="fas  fa-chart-bar"></i>
+
+                    <span>Biểu đồ Performance</span>
+                </a>
+
+
+            </li>
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+
+        <!-- End of Sidebar -->
+
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <!-- End of Footer -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckfinder/ckfinder.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="@Url.ContentVersioned("~/Scripts/custom/common","js")"></script>
+    <script src="@Url.ContentVersioned("~/Scripts/custom/claim_view","js")"></script>
+    <script src="@Url.ContentVersioned("~/Scripts/custom/chart_common","js")"></script>
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

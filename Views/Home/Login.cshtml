@@ -1,0 +1,46 @@
+﻿@using FormProject.Controllers.Helper
+@model FormProject.Database.User
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="@Url.ContentVersioned("~/Content/css/login","css")" rel="stylesheet"  />
+
+</head>
+<body>
+    <div class="global-container">
+        <div class="card login-form">
+            <div class="card-body">
+                <h3 class="card-title text-center">ĐĂNG NHẬP</h3>
+                <div class="card-text">
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label>Username</label>
+                            @Html.TextBoxFor(m => m.Id, new { @class = "form-control", placeholder = FormProject.Resource.StaffCode, @required = "required" })
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = FormProject.Resource.Password, @type = "password", @required = "required" })
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">@FormProject.Resource.Login</button>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+

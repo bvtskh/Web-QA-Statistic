@@ -1,0 +1,263 @@
+﻿@using FormProject.Controllers.Helper
+
+@{
+    ViewBag.Title = "OQCChart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    h5 {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+    }
+
+    input {
+        font-size: 12px;
+    }
+
+    #container {
+        height: 100%;
+        width: 50%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .chart {
+        /*height: 50%;*/
+    }
+    .chart-height {
+        height: 370px;
+    }
+    table {
+        font-size: 10px;
+    }
+
+        table tr, td {
+            color: #111;
+        }
+
+    .font-small {
+        font-size: 10px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row mt-2 ">
+
+        <div class=" border p-2">
+
+            <p class="font-weight-bold"> AREA</p>
+            <div class="form-inline ">
+                <button type="button" class="btn   mr-2 area border"> AUTO</button>
+                <button type="button" class="btn   mr-2 area border"> ID</button>
+                <button type="button" class="btn  mr-2 area border"> OA</button>
+                <button type="button" class="btn mr-2 area border  bg-secondary1 text-black"> ALL</button>
+            </div>
+            <hr />
+           
+            <div class="text-center p-2 ml-2">
+                <div class="form-check-inline d-inline ">
+                    <input class="form-check-input" type="checkbox" value="true" id="check_oqc1" onchange="onChangeCheckStation()">
+                    <label class="form-check-label font-weight-normal" for="check_oqc1">
+                        OQC1
+                    </label>
+                </div>
+                <div class="form-check-inline d-inline ">
+                    <input class="form-check-input" type="checkbox" value="true" id="check_oqc2" onchange="onChangeCheckStation()">
+                    <label class="form-check-label font-weight-normal" for="check_oqc2">
+                        OQC2
+                    </label>
+                </div>
+                <div class="form-check-inline d-inline">
+                    <input class="form-check-input" type="checkbox" value="true" id="check_csl" onchange="onChangeCheckStation()">
+                    <label class="form-check-label font-weight-normal" for="check_csl">
+                        CSL
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class=" border p-2">
+            <br />
+            <p class="font-weight-bold text-uppercase text-black">MONTH TO DATE</p>
+            <hr />
+            <div class="form-inline">
+                <input type="date" class="form-control" id="filter_date_from" />
+                <span class="p-2">Đến</span>
+                <input type="date" class="form-control" id="filter_date_to" />
+                <button type="button" class="btn btn-primary ml-2 text-white" id="btn_filter" onclick="loadData()" >Lọc</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row ">
+        <div class="col-4">
+            <p class="font-weight-bold">DAY/NIGHT PERFORMANCE OVERVIEW</p>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Values</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Night</th>
+                        <th scope="col">Grand Total</th>
+                    </tr>
+                </thead>
+                <tbody id="daynight"></tbody>
+            </table>
+        </div>
+        <div id="chartDayNight" class="col-7"></div>
+    </div>
+    <br />
+    <div class="row chart">
+        <div class="col-4">
+            <div class="">
+                <p class="font-weight-bold d-inline">DAILY PERFORMANCE</p>
+                <div class="form-check-inline d-inline ml-5">
+                    <input class="form-check-input" type="checkbox" value="true" id="check_day" checked>
+                    <label class="form-check-label font-weight-normal" for="check_day">
+                        Day
+                    </label>
+                </div>
+                <div class="form-check-inline d-inline">
+                    <input class="form-check-input" type="checkbox" value="true" id="check_night" checked>
+                    <label class="form-check-label font-weight-normal" for="check_night">
+                        Night
+                    </label>
+                </div>
+            </div>
+            <br />
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-warning1 text-white">
+                        <th scope="col">Customer</th>
+                        <th scope="col">Total Check(pcs)</th>
+                        <th scope="col">Total NG(pcs)</th>
+                        <th scope="col">Defection(PPM)</th>
+                    </tr>
+                </thead>
+                <tbody id="daily"></tbody>
+            </table>
+        </div>
+        <div id="chartDaily" class="col-7 border chart-height ">
+
+        </div>
+
+    </div>
+    <div class="row mt-5">
+        <div class="col-4">
+            <p class="font-weight-bold">FAIL RATE</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-warning1 text-white">
+                        <th scope="col">NG TYPE</th>
+                        <th scope="col">Total NG(pcs)</th>
+                        <th scope="col">
+                            Cumulative(%)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="fail_rate"></tbody>
+            </table>
+        </div>
+        <div id="chartFailRate" class="col-7 border chart-height "></div>
+    </div>
+
+    <div class="row chart mt-5">
+        <div class="col-4">
+            <div class="">
+                <p class="font-weight-bold d-inline">WO PERFORMANCE</p>
+            </div>
+            <br />
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-warning1 text-white">
+                        <th scope="col">Customer</th>
+                        <th scope="col">Total WO Check</th>
+                        <th scope="col">Total WO NG</th>
+                        <th scope="col">Tỷ lệ (%)</th>
+                    </tr>
+                </thead>
+                <tbody id="woPerformance"></tbody>
+            </table>
+        </div>
+        <div id="chartWO" class="col-7 border chart-height "></div>
+
+    </div>
+    <div class="row mt-5">
+        <p class="font-weight-bold">WEEKLY REVIEW</p>
+        <table class="table table-bordered" id="table_weekly">
+            <thead>
+                <tr>
+                    <th scope="col">CUSOMER</th>
+                    <th scope="col" colspan="3">2/1/2021 - 2/7/2021</th>
+                    <th scope="col">2/1/2021 - 2/7/2021</th>
+                    <th scope="col">2/1/2021 - 2/7/2021</th>
+                </tr>
+            </thead>
+
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Total Check</th>
+                    <th scope="col">Total NG</th>
+                    <th scope="col">PPM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">HONDA</th>
+                    <td>1000</td>
+                    <td>1000</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <th scope="row">NICHIKON</th>
+                    <td>1000</td>
+                    <td>1000</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <th scope="row">YOKOWO</th>
+                    <td>1000</td>
+                    <td>1000</td>
+                    <td>1000</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row mt-5">
+        <p class="font-weight-bold">MAN-POWER</p>
+        <br />
+
+    </div>
+
+    <div class="row border text-white bg-primary1 font-small">
+        <div class="col border p-2">AREA</div>
+        <div class="col border p-2">INSPECTOR</div>
+        <div class="col border p-2">CHECK(pcs)</div>
+        <div class="col border p-2">DEFECTION</div>
+        <div class="col border p-2">Sum of NG Quantity</div>
+    </div>
+    <div id="man_power">
+
+
+    </div>
+    <div class="loading middle">
+        <img src="~/Images/loader4.gif" />
+    </div>
+</div>
+<br />
+@section scripts{
+    <script src="@Url.ContentVersioned("~/Scripts/custom/moment","js")"></script>
+    <script src="@Url.ContentVersioned("~/Scripts/custom/oqcchart","js")"></script>
+    <script src="~/Scripts/canvas/canvasjs.min.js"></script>
+
+}

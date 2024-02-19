@@ -1,0 +1,62 @@
+﻿
+@using FormProject.Database;
+@model  FormProject.Database.Claim
+<div class="container-fluid shadow bg-common">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+       
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Containment_action</u></p>
+
+        @Html.HiddenFor(m => m.Containment_Action)
+        <div class="group_material mt-3">
+            @Html.HiddenFor(m => m.Containment_Action)
+            <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+                <label class="">@Resource.Title_Stock_check_method</label>
+                <br />
+                <label class="">@Resource.Title_Target_part_no</label>
+                <br />
+                <label class="">@Resource.Title_result_check</label>
+                <br />
+                <hr />
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Containment_Action))
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.Delivery_history)
+        <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+            <label class="">@Resource.Title_Delivery_history</label>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Delivery_history))
+        </div>
+        <br />
+        <p class="text-uppercase font-weight-bold mt-3 mb-3"><u>@Resource.Title_Root_Cause</u></p>
+
+        @Html.HiddenFor(m => m.Cause_occur)
+        <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+            <label class="">@Resource.Title_Cause_occur</label>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Cause_occur))
+        </div>
+
+        @Html.HiddenFor(m => m.Cause_outflow)
+        <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+            <label class="">@Resource.Title_Cause_outflow</label>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Cause_outflow))
+        </div>
+        <br />
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Permanent_Corrective__Action</u></p>
+
+        @Html.HiddenFor(m => m.Temp_measure)
+        <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+            <label class="">@Resource.Title__Temporary_measures</label>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Temp_measure))
+        </div>
+
+        @Html.HiddenFor(m => m.Outflow_countermeasure)
+        <div class="group_material mt-3 bg-light p-3 rounded overflow-auto">
+            <label class="">@Resource.Title_Outflow_countermeasures</label>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Outflow_countermeasure))
+        </div>
+
+    </div>
+</div>
+

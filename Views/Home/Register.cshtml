@@ -1,0 +1,48 @@
+﻿@model FormProject.Database.User
+<div class="container shadow mt-5">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+        <div class="form-group m-3 p-3">
+            @Html.ValidationMessage("Dupplicate", new { @class = "text-danger" })
+            @Html.ValidationMessage("Error", new { @class = "text-danger" })
+            @Html.ValidationMessage("Success", new { @class = "text-success" })
+
+            @Html.TextBoxFor(m => m.Id, new { @class = "form-control mt-3", placeholder = "Mã nhân viên", @required = "required" })
+            @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
+
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control mt-3", placeholder = "Tên nhân viên", @required = "required" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control mt-3", placeholder = "Email", @required = "required" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control mt-3", placeholder = "Mật khẩu", @type = "password", @required = "required" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+            @if (ViewBag.Departments != null)
+            {
+                @Html.DropDownList("Department_id", new SelectList(ViewBag.Departments, "Id", "Name"), "Chọn phòng ban", new { @class = "form-control mt-3" })
+            }
+            @if (ViewBag.Positions != null)
+            {
+                @Html.DropDownList("Position_id", new SelectList(ViewBag.Positions, "Id", "Name"), "Chọn chức vụ", new { @class = "form-control mt-3" })
+            }
+            @Html.TextBoxFor(m => m.MailCC, new { @class = "form-control mt-3", placeholder = "Email của Trưởng bộ phận", @required = "required" })
+            @Html.ValidationMessageFor(m => m.MailCC, "", new { @class = "text-danger" })
+            <div class="mt-3">
+                @Html.CheckBoxFor(m => m.IsAdmin)
+                @Html.LabelFor(m => m.IsAdmin)
+            </div>
+            <input type="submit" value="Đăng ký" class="btn btn-primary" />
+        </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

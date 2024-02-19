@@ -1,0 +1,47 @@
+﻿@using FormProject.Database;
+@{
+    ViewBag.Title = "CreateProcess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Process>
+<div class="container shadow mt-5">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+        <form action="CreateProcess" method="post">
+            @Html.ValidationMessage("Error", new { @class = "text-danger", id = "error" })
+            <input type="text" class="form-control" placeholder="Nhập tên process" name="name" required />
+            <label class="checkbox-inline mt-3"><input type="checkbox" value="1" name="canEdit"> Có thể sửa</label>
+            <br />
+            <input type="submit" class="btn btn-primary" value="Thêm" />
+        </form>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Tên process</th>
+                    <th scope="col">Có thể edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var process in Model)
+                    {
+                        <tr>
+                            <td>@process.Name</td>
+                            <td>@(process.CanEdit == 1 ? "Có" : "Không")</td>
+                            @*<td scope="col">
+                                <div class="btn btn-danger">
+                                    <a class="text-white text-decoration-none" href="@Url.Action("DeleteProcess","Process", new { Id = process.Id })">Xóa</a>
+                                </div>
+                            </td>*@
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

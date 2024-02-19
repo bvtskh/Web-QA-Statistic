@@ -1,0 +1,38 @@
+﻿@using FormProject.Controllers.Helper
+@{
+    ViewBag.Title = "Chart Claim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <label class="mt-5">Từ</label>
+                <input type="month" id="start" class="form-control mt-1" value="2021-03" onchange="onMonth()">
+                <label class="mt-5">Đến</label>
+                <input type="month" id="end" class="form-control mt-1" value="2021-03" onchange="onMonth()">
+                <button id="btn_view_chart"class="btn btn-primary mt-5" onclick="onViewChart()">Xem</button>
+            </div>
+            <div class="col-8">
+                <canvas id="barcanvas"></canvas>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8">
+                <canvas id="pie_chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    <script src="@Url.ContentVersioned("~/Scripts/custom/chart","js")"></script>
+}

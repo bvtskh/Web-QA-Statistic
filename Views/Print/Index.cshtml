@@ -1,0 +1,144 @@
+﻿@using FormProject.Database;
+@using FormProject.Controllers.Helper;
+@model FormProject.Database.Claim
+
+@{
+    User user = (User)HttpContext.Current.Session["User"];
+    var canEdit = 0;
+    if (user != null && Model.NextStep != null && Model.NextStep.Action_by.Contains(user.Id) && Model.IsNewest == 1 && Model.Status_approval != Constants.Status_Init)
+    {
+        canEdit = 1;
+    }
+
+}
+
+<div class="col-md-12 p-2 pl-3">
+
+    @using (Html.BeginForm("Detail", "Claim", FormMethod.Post, new { id = "view-form", onkeydown = "return event.keyCode!=13" }))
+    {
+        @Html.AntiForgeryToken();
+        @Html.Partial("~/Views/Claim/_ClaimViewPharse1.cshtml", Model);
+        <br />
+        if (Model.Type_Form == null || Model.Type_Form == FormType.FIVE_WHY)
+        {
+            @Html.Partial("~/Views/Claim/_ClaimViewPhare2.cshtml", Model)
+        }
+        else if (Model.Type_Form == FormType.REPORT)
+        {
+            @Html.Partial("~/Views/Claim/_ClaimViewReport.cshtml", Model)
+        }
+        @Html.Partial("~/Views/Claim/_CommonInfoClaim.cshtml", Model)
+        <input type="hidden" class="can-edit" value="@canEdit">
+        <br />
+        @Html.HiddenFor(m => m.Process, new { id = "process" })
+        @Html.HiddenFor(m => m.ProcessListId);
+        <br />
+        <div class="container-fluid ml-5">
+            @if (ViewBag.Steps != null)
+            {
+                foreach (Process process in ViewBag.Steps)
+                {
+                    <input type="hidden" class="@process.Id" value="@process.Name">
+                }
+            }
+            <div id="steps-form-detail" class="steps-form">
+                <div id="step-form" class="steps-row setup-panel">
+                </div>
+            </div>
+
+            @if (Model != null && Model.NextStep != null)
+            {
+                @Html.HiddenFor(m => m.NextStep.Id, new { id = "next-step" })
+            }
+            @Html.ValidationMessage("Error", new { @class = "text-danger", id = "error" })
+
+            @if (canEdit == 1)
+            {
+
+                if (ViewBag.Submitors != null)
+                {
+                    <br />
+                    <div id="submitors" class="container-fluid">
+                        <input class="form-control" id="searchUser" type="text" placeholder="Tìm kiếm">
+                        <br>
+                        <ul class="list-group" id="listUser">
+                            @foreach (var u in ViewBag.Submitors)
+                            {
+                                <li class="list-group-item form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" data-text="@u.DisplayName" name="@u.Id">@u.DisplayName
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                }
+                <br />
+                <div>
+                    @if (Model.Status_approval > Constants.Status_Create)
+                    {
+                        <div class="d-inline">
+                            <input type="button" value="@Model.NextStep.Name" name="approve" class="btn btn-info mt-3 text-white" id="view-approve" />
+                        </div>
+                    }
+
+                    @if (Model.AllPreviousStep.Count > 0)
+                    {
+                        <div class="d-inline ml-3">
+                            <button type="button" class="btn btn-link mt-3" onclick="return ShowFormReject()">Bạn muốn Reject &rarr; </button>
+                        </div>
+                    }
+                </div>
+                if (Model != null && Model.AllPreviousStep.Count > 0)
+                {
+                    <div class="form-reject mt-3">
+                        @Html.DropDownList("SteptToReject", new SelectList(Model.AllPreviousStep, "Id", "DisplayName"), Resource.Select_Step_To_Reject, new { @class = "form-control mt-3" })
+
+                        <div class="group_material mt-3">
+                            <label class="">@Resource.Field_Comment_reject</label>
+                            @Html.ValidationMessageFor(m => m.Comment_reject, "", new { @class = "text-danger" })
+                            <textarea class="form-control mt-3"
+                                      id="Comment_reject"
+                                      name="Comment_reject"
+                                      rows="4"
+                                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Comment_reject))
+                            </textarea>
+                        </div>
+                        <input type="button" value="Reject" name="reject" class="btn btn-danger mt-3 text-white" id="view-reject" />
+                        @Html.HiddenFor(m => m.ActionName)
+                    </div>
+                }
+
+            }
+            else
+            {
+                if (ViewBag.Submitors != null)
+                {
+                    <br />
+                    <div id="submitors" class="container-fluid">
+                        <ul class="list-group" id="listUser">
+                            @foreach (var u in ViewBag.Submitors)
+                            {
+                                <li class="list-group-item form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input checkbox-view" data-text="@u.DisplayName" name="@u.Id">@u.DisplayName
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                }
+            }
+        </div>
+
+    }
+    @Html.Partial("~/Views/Claim/_FormAccept.cshtml")
+</div>
+<br />
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.ContentVersioned("~/Scripts/custom/claim_detail","js")"></script>
+
+}

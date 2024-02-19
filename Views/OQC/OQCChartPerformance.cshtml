@@ -1,0 +1,145 @@
+﻿@using Newtonsoft.Json
+@using FormProject.Database
+@using FormProject.Controllers.Helper
+@{
+    ViewBag.Title = "OQCChartPerformance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table {
+        font-size: 10px;
+    }
+
+        table tr, td {
+            color: #111;
+        }
+
+    .main-stop {
+        stop-color: red;
+    }
+
+    .alt-stop {
+        stop-color: white;
+    }
+</style>
+<div class="container-fluid">
+    <div class="loading middle">
+        <img src="~/Images/loader4.gif" />
+    </div>
+    <div class="row mt-5">
+        <div class="border p-2 ml-2">
+            <div class="form-inline">
+                <button type="button" class="btn border  mr-2 chart_view bg-secondary1  text-black"> Ngày</button>
+                <button type="button" class="btn border  mr-2 chart_view text-black"> Tuần</button>
+                <button type="button" class="btn border  mr-2  chart_view text-black">Tháng </button>
+                <button type="button" class="btn border  mr-2  chart_view text-black"> Năm</button>
+            </div>
+            <hr />
+            <div class="form-check-inline d-inline ">
+                <input class="form-check-input" type="checkbox" value="true" id="check_oqc1" onchange="onChangeCheckStation()">
+                <label class="form-check-label font-weight-normal" for="check_oqc1">
+                    OQC1
+                </label>
+            </div>
+            <div class="form-check-inline d-inline ">
+                <input class="form-check-input" type="checkbox" value="true" id="check_oqc2" onchange="onChangeCheckStation()">
+                <label class="form-check-label font-weight-normal" for="check_oqc2">
+                    OQC2
+                </label>
+            </div>
+            <div class="form-check-inline d-inline">
+                <input class="form-check-input" type="checkbox" value="true" id="check_csl" onchange="onChangeCheckStation()">
+                <label class="form-check-label font-weight-normal" for="check_csl">
+                    CSL
+                </label>
+            </div>
+        </div>
+        
+        @Html.Partial("~/Views/OQC/_FilterView.cshtml")
+    </div>
+    <hr />
+    <div class="row">
+        <div id="chartPerformance" style="height: 370px; width: 800px;"></div>
+    </div>
+    <br />
+    <div class=" row mt-10">
+        <div class="">
+            <table class="table table-dark bg-white" id="table_daily">
+                <thead id="thead">
+                    <tr id="dateStr">
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody id="bodyPerformance">
+                    <tr id="totalCheck" class="bg-ranking">
+                        <td>Total Check</td>
+                    </tr>
+                    <tr id="totalNG" class="bg-ng">
+                        <td>TotalNG</td>
+                    </tr>
+                    <tr id="PPM" class="bg-check">
+                        <td>PPM</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <br />
+    <p class="font-weight-bold">WO PERFORMANCE</p>
+    <div class="row mt-10">
+        <div id="chartWOPerformance" style="height: 370px; width: 800px;"></div>
+    </div>
+    <div class="row mt-10">
+        <div class="">
+            <table class="table table-dark bg-white" id="table_daily">
+                <thead id="thead">
+                    <tr id="dateStrbyWO">
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody id="bodyByWo">
+                    <tr id="totalWO" class="bg-ranking">
+                        <td></td>
+                    </tr>
+                    <tr id="totalWoNG" class="bg-ng">
+                        <td></td>
+                    </tr>
+                    <tr id="ratio" class="bg-check">
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <p class="font-weight-bold">NG RATE (ppm)</p>
+    <div id="chartNGRate" style="height: 370px; width: 800px;"></div>
+    <br />
+    <div class="row mt-10">
+        <div class="">
+            <table class="table table-dark bg-white" id="table_ng_by_cus">
+                <thead id="thead">
+                    <tr id="dateStrbyCus">
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody id="bodyByCus">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @section scripts{
+        <script src="@Url.ContentVersioned("~/Scripts/custom/moment","js")"></script>
+        <script src="@Url.ContentVersioned("~/Scripts/custom/oqcchartperformance","js")"></script>
+        <script src="~/Scripts/canvas/canvasjs.min.js"></script>
+    }

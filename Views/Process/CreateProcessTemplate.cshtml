@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "CreateProcessTemplete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using FormProject.Database;
+<div class="container shadow mt-5">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+        @if (TempData["SaveProcess"] != null && TempData["SaveProcess"].ToString() == Constants.Result_OK)
+        {
+            <div class="alert alert-success m-3" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @TempData["SaveProcessContent"]
+            </div>
+        }
+        @if (ViewBag.ProcessList != null)
+        {
+            <form action="SaveProcess" method="post" id="save-form">
+                @Html.ValidationMessage("Error", new { @class = "text-danger", id = "error" })
+                <input type="text" class="form-control" placeholder="Tên process" name="displayName" required />
+                <select class="form-control mt-3" required>
+                    <option value="">Chọn Process</option>
+                    @foreach (Process process in ViewBag.ProcessList)
+                    {
+                        <option value="@process.Id">@process.Name</option>
+                    }
+                </select>
+                <input type="button" class="btn btn-primary mt-3" value="Thêm" onclick="return addStep()" />
+                <input type="button" class="btn btn-danger mt-3" value="Xóa Step" onclick="return deleteStep()" />
+                <br /><br />
+                <div id="steps-form" class="steps-form">
+                    <div class="steps-row setup-panel">
+                    </div>
+                </div>
+                <input type="hidden" value="" name="process" id="process" />
+                <input type="button" class="btn btn-primary mt-3" value="Lưu" onclick="return save()" />
+            </form>
+
+        }
+
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/custom/process.js"></script>
+}
+
+
+

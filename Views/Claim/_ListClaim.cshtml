@@ -1,0 +1,87 @@
+﻿@using FormProject.Database;
+@model List<FormProject.Database.Claim>
+
+@{
+    User user = (User)HttpContext.Current.Session["User"];
+
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col" class=" text-dark">@Resource.Index</th>
+            <th scope="col">Mã quản lý</th>
+            <th scope="col">Ngày tạo</th>
+            <th scope="col">Khách hàng</th>
+            <th scope="col">Phân loại</th>
+            <th scope="col">Tên Model</th>
+            <th scope="col">Tên nhóm Model</th>
+            <th scope="col">Chủ đề</th>
+            <th scope="col">Ngày hết hạn</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Phân loại 4M</th>
+        </tr>
+    </thead>
+    <tbody id="claimTable">
+        @{
+            var i = 1;
+            foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <th scope="row">
+                        <a href="@Url.Action("ClaimView", "Claim", new { Id = claim.Id })">
+                            @claim.No
+                        </a>
+                    </th>
+                    <td>@(string.Format("{0:d}", claim.Create_date))</td>
+                    <td>@claim.Customer</td>
+                    <td>@claim.Type</td>
+                    <td>@claim.Model_name</td>
+                    <td>@claim.Model_group</td>
+                    <td>@claim.Subject</td>
+                    @{
+                        if (claim.Due_date != null)
+                        {
+                            DateTime duedate = (DateTime)claim.Due_date;
+                            if (duedate.Date < DateTime.Now.Date)
+                            {
+                                <td class="text-danger">@(string.Format("{0:d}", claim.Due_date))</td>
+                            }
+                            else
+                            {
+                                <td>@(string.Format("{0:d}", claim.Due_date))</td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                        if (claim.Status == Constants.STATUS_CLOSE)
+                        {
+                            <td class="text-success">@Resource.Closed</td>
+                        }
+                        else if (claim.Status == Constants.STATUS_OPEN)
+                        {
+                            <td>@Resource.Open</td>
+                        }
+                        else
+                        {
+                            <td>@Resource.Field_Draft</td>
+                        }
+                    }
+                    @if (claim.Classify4M != null)
+                    {
+                        <td>@claim.Classify4M</td>
+                    }
+                    else
+                    {
+                        <td></td>
+
+                    }
+
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

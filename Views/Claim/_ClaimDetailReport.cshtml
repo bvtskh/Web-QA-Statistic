@@ -1,0 +1,85 @@
+﻿
+@using FormProject.Database;
+@model  FormProject.Database.Claim
+<div class="container-fluid shadow m-5">
+
+    <!-- Claim list -->
+    <div class="card-body mt-10">
+       
+        <p class="text-uppercase font-weight-bold mt-3 mb-3 header-color"><u>@Resource.Title_Containment_action</u></p>
+
+        <div class="group_material mt-3">
+            <label class="">@Resource.Title_Stock_check_method</label>
+            <br />
+            <label class="">@Resource.Title_Target_part_no</label>
+            <br />
+            <label class="">@Resource.Title_result_check</label>
+            <br />
+            @Html.ValidationMessageFor(m => m.Containment_Action, "", new { @class = "text-danger" })
+            <textarea class="form-control mt-3"
+                      id="Containment_Action"
+                      name="Containment_Action"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Containment_Action))
+            </textarea>
+        </div>
+
+        <div class="group_material mt-3">
+            <label class="">@Resource.Title_Delivery_history</label>
+            @Html.ValidationMessageFor(m => m.Delivery_history, "", new { @class = "text-danger" })
+            <textarea class="form-control mt-3"
+                      id="Delivery_history"
+                      name="Delivery_history"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Delivery_history))
+            </textarea>
+        </div>
+        <br />
+        <p class="text-uppercase font-weight-bold mt-3 mb-3"><u>@Resource.Title_Root_Cause</u></p>
+
+        <div class="group_material mt-3">
+            <label class="">@Resource.Title_Cause_occur</label>
+
+            @Html.ValidationMessageFor(m => m.Cause_occur, "", new { @class = "text-danger" })
+            <textarea class="form-control mt-3"
+                      id="Cause_occur"
+                      name="Cause_occur"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Cause_occur))
+            </textarea>
+        </div>
+        <div class="group_material mt-3">
+            <label class="">@Resource.Title_Cause_outflow</label>
+            @Html.ValidationMessageFor(m => m.Cause_outflow, "", new { @class = "text-danger" })
+            <textarea class="form-control mt-3"
+                      id="Cause_outflow"
+                      name="Cause_outflow"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Cause_outflow))
+            </textarea>
+        </div>
+        <br />
+        <p class="text-uppercase font-weight-bold mt-3 mb-3"><u>@Resource.Title_Permanent_Corrective__Action</u></p>
+        <div class="group_material mt-3">
+            <label class="">@Resource.Title__Temporary_measures</label>
+            @Html.ValidationMessageFor(m => m.Temp_measure, "", new { @class = "text-danger" })
+            <textarea class="form-control mt-3"
+                      id="Temp_measure"
+                      name="Temp_measure"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Temp_measure))
+            </textarea>
+        </div>
+        <div class="group_material mt-3">
+            <label class="">@Resource.Title_Outflow_countermeasures</label>
+            @Html.ValidationMessageFor(m => m.Outflow_countermeasure, "", new { @class = "text-danger" })
+            <textarea class="form-control mt-3"
+                      id="Outflow_countermeasure"
+                      name="Outflow_countermeasure"
+                      rows="4"
+                      cols="20">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Outflow_countermeasure))
+            </textarea>
+        </div>
+
+    </div>
+</div>

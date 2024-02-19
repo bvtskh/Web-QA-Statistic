@@ -1,0 +1,192 @@
+﻿@using FormProject.Database;
+@model List<FormProject.Database.Claim>
+
+@{
+    User user = (User)HttpContext.Current.Session["User"];
+}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Search -->
+            @*<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <input id="search_input" type="text" class="form-control" placeholder="Tìm theo mã quản lý">
+                </form>*@
+            <input id="search_input" type="text" class="form-control d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" placeholder="Tìm theo mã quản lý">
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+                @if (user != null)
+                {
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter" id="number_notice"></span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in">
+                            @if (ViewBag.Notices != null)
+                            {
+                                @Html.Partial("~/Views/Notice/_Notice.cshtml", (List<Notice>)ViewBag.Notices);
+                            }
+                        </div>
+
+                    </li>
+                }
+
+            </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        @{
+            if (TempData["SaveClaim"] != null && TempData["SaveClaim"].ToString() == Constants.Result_OK)
+            {
+                <div class="alert alert-success m-3" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @TempData["SaveClaimContent"]
+                </div>
+
+                if (TempData["NextActionBy"] != null)
+                {
+                    <input type="hidden" value="@TempData["NextActionBy"]" id="send_to" />
+                }
+            }
+
+        }
+
+        <div class="card shadow mr-3 ml-3">
+            <!--Claim Header -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Danh sách Claim</h6>
+                @{
+
+                    if (user != null)
+                    {
+                        <div>
+                            <a href="@Url.Action("Detail","Claim")" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> Tạo mới
+                            </a>
+                            <a href="@Url.Action("Export","Claim")" class="btn btn-primary">
+                                <i class="fa fa-file-excel"></i> Export
+                            </a>
+                        </div>
+
+                    }
+                }
+
+
+            </div>
+            <!-- Claim list -->
+            <div class="card-body main-view">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class=" text-dark">@Resource.Index</th>
+                            <th scope="col">Mã quản lý</th>
+                            <th scope="col">Ngày tạo</th>
+                            <th scope="col">Khách hàng</th>
+                            <th scope="col">Phân loại</th>
+                            <th scope="col">Tên Model</th>
+                            <th scope="col">Tên nhóm Model</th>
+                            <th scope="col">Chủ đề</th>
+                            <th scope="col">Ngày hết hạn</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Phân loại 4M</th>
+                        </tr>
+                    </thead>
+                    <tbody id="claimTable">
+                        @{
+                            var i = 1;
+                            foreach (var claim in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <th scope="row">
+                                        <a href="@Url.Action("ClaimView", "Claim", new { Id = claim.Id })">
+                                            @claim.No
+                                        </a>
+                                    </th>
+                                    <td>@(string.Format("{0:d}", claim.Create_date))</td>
+                                    <td>@claim.Customer</td>
+                                    <td>@claim.Type</td>
+                                    <td>@claim.Model_name</td>
+                                    <td>@claim.Model_group</td>
+                                    <td>@claim.Subject</td>
+                                    @{
+                                        if (claim.Due_date != null)
+                                        {
+                                            DateTime duedate = (DateTime)claim.Due_date;
+                                            if (duedate.Date < DateTime.Now.Date)
+                                            {
+                                                <td class="text-danger">@(string.Format("{0:d}", claim.Due_date))</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@(string.Format("{0:d}", claim.Due_date))</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        if (claim.Status == Constants.STATUS_CLOSE)
+                                        {
+                                            <td class="text-success">@Resource.Closed</td>
+                                        }
+                                        else if (claim.Status == Constants.STATUS_OPEN)
+                                        {
+                                            <td>@Resource.Open</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Resource.Field_Draft</td>
+                                        }
+                                    }
+                                    @if (claim.Classify4M != null)
+                                    {
+                                        <td>@claim.Classify4M</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+
+                                    }
+
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="page">
+
+            </div>
+
+        </div>
+        <div class="loading middle">
+            <img src="~/Images/loading.gif" />
+        </div>
+    </div>
+
+</div>
+<!-- End of Main Content -->
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
