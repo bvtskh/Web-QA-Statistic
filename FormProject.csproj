@@ -3203,15 +3203,6 @@
     <Content Include="obj\Debug\edmxResourcesToEmbed\Database\ClaimFormModel.csdl" />
     <Content Include="obj\Debug\edmxResourcesToEmbed\Database\ClaimFormModel.msl" />
     <Content Include="obj\Debug\edmxResourcesToEmbed\Database\ClaimFormModel.ssdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\ClaimModel.csdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\ClaimModel.msl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\ClaimModel.ssdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\Model.csdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\Model.msl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\Model.ssdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\Model1.csdl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\Model1.msl" />
-    <Content Include="obj\Debug\edmxResourcesToEmbed\Database\Model1.ssdl" />
     <Content Include="obj\Debug\FormProject.csproj.CopyComplete" />
     <Content Include="obj\Debug\FormProject.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\FormProject.csproj.GenerateResource.cache" />
