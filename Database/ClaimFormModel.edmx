@@ -1,0 +1,1346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ClaimFormModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="100" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Claim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="No" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Customer" Type="nvarchar(max)" />
+          <Property Name="Model_name" Type="nvarchar(max)" />
+          <Property Name="Model_group" Type="nvarchar(max)" />
+          <Property Name="Model_Id" Type="nvarchar(max)" />
+          <Property Name="Create_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="Create_date" Type="date" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Occur_content" Type="nvarchar(max)" />
+          <Property Name="Occur_date" Type="datetime" />
+          <Property Name="Image_NG" Type="nvarchar(max)" />
+          <Property Name="Occur_place" Type="nvarchar(max)" />
+          <Property Name="Person_detect" Type="nvarchar(max)" />
+          <Property Name="Number_NG" Type="int" />
+          <Property Name="Number_test" Type="int" />
+          <Property Name="Occur_frequency" Type="nvarchar(max)" />
+          <Property Name="Date_make" Type="date" />
+          <Property Name="Confirm_artifact" Type="nvarchar(max)" />
+          <Property Name="Point_change" Type="nvarchar(max)" />
+          <Property Name="Retest" Type="nvarchar(max)" />
+          <Property Name="Confirm_factor" Type="nvarchar(max)" />
+          <Property Name="Analysis_factor" Type="nvarchar(max)" />
+          <Property Name="Reason_occur" Type="nvarchar(max)" />
+          <Property Name="Reason_error" Type="nvarchar(max)" />
+          <Property Name="Step_occur" Type="nvarchar(max)" />
+          <Property Name="Step_error" Type="nvarchar(max)" />
+          <Property Name="Strategy_IsPokayoke" Type="int" />
+          <Property Name="Strategy_temp" Type="nvarchar(max)" />
+          <Property Name="Strategy_longtime" Type="nvarchar(max)" />
+          <Property Name="Strategy_follow" Type="nvarchar(max)" />
+          <Property Name="Strategy_verify" Type="nvarchar(max)" />
+          <Property Name="Response_occur_place" Type="nvarchar(max)" />
+          <Property Name="Confirm_complete" Type="nvarchar(max)" />
+          <Property Name="Status_approval" Type="int" />
+          <Property Name="IsNewest" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ProcessListId" Type="int" />
+          <Property Name="Process" Type="nvarchar(max)" />
+          <Property Name="Modify_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="Modify_date" Type="datetime" />
+          <Property Name="Comment_reject" Type="nvarchar(max)" />
+          <Property Name="ActionName" Type="nvarchar(max)" />
+          <Property Name="Next_Action_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="CanEdit" Type="int" />
+          <Property Name="Classify4M" Type="nvarchar(max)" />
+          <Property Name="Due_date" Type="date" />
+          <Property Name="Cause_occur" Type="nvarchar(max)" />
+          <Property Name="Delivery_history" Type="nvarchar(max)" />
+          <Property Name="Cause_outflow" Type="nvarchar(max)" />
+          <Property Name="Temp_measure" Type="nvarchar(max)" />
+          <Property Name="Outflow_countermeasure" Type="nvarchar(max)" />
+          <Property Name="Type_Form" Type="nvarchar" MaxLength="50" />
+          <Property Name="Containment_Action" Type="nvarchar(max)" />
+          <Property Name="FileAttach" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reciever" Type="nvarchar" MaxLength="100" />
+          <Property Name="NoticeContent" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClaimId" Type="int" />
+          <Property Name="SendDate" Type="datetime" />
+          <Property Name="IsRead" Type="int" />
+        </EntityType>
+        <EntityType Name="ODI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOccur" Type="datetime" Nullable="false" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Shift" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Station" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Inspector" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WOQty" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CheckNumber" Type="int" Nullable="false" />
+          <Property Name="NumberNG" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="Occur_Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Occur_Line" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Serial_Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Defection" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Detail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NG_Photo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OK_Photo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sample_Form" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsConfirm" Type="bit" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CanEdit" Type="int" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ProcessList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Process" Type="nvarchar" MaxLength="100" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TargetPPM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Target" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeNG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeNG" Type="nvarchar" MaxLength="500" />
+          <Property Name="JP" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Department_id" Type="int" />
+          <Property Name="Position_id" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="MailCC" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ClaimForm.dbo.NewestClaim' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="NewestClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RowNumber" Type="bigint" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="No" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Customer" Type="nvarchar(max)" />
+          <Property Name="Model_name" Type="nvarchar(max)" />
+          <Property Name="Model_group" Type="nvarchar(max)" />
+          <Property Name="Model_Id" Type="nvarchar(max)" />
+          <Property Name="Create_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="Create_date" Type="date" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Occur_content" Type="nvarchar(max)" />
+          <Property Name="Occur_date" Type="datetime" />
+          <Property Name="Image_NG" Type="nvarchar(max)" />
+          <Property Name="Occur_place" Type="nvarchar(max)" />
+          <Property Name="Person_detect" Type="nvarchar(max)" />
+          <Property Name="Number_NG" Type="int" />
+          <Property Name="Number_test" Type="int" />
+          <Property Name="Occur_frequency" Type="nvarchar(max)" />
+          <Property Name="Date_make" Type="date" />
+          <Property Name="Confirm_artifact" Type="nvarchar(max)" />
+          <Property Name="Point_change" Type="nvarchar(max)" />
+          <Property Name="Retest" Type="nvarchar(max)" />
+          <Property Name="Confirm_factor" Type="nvarchar(max)" />
+          <Property Name="Analysis_factor" Type="nvarchar(max)" />
+          <Property Name="Reason_occur" Type="nvarchar(max)" />
+          <Property Name="Reason_error" Type="nvarchar(max)" />
+          <Property Name="Step_occur" Type="nvarchar(max)" />
+          <Property Name="Step_error" Type="nvarchar(max)" />
+          <Property Name="Strategy_IsPokayoke" Type="int" />
+          <Property Name="Strategy_temp" Type="nvarchar(max)" />
+          <Property Name="Strategy_longtime" Type="nvarchar(max)" />
+          <Property Name="Strategy_follow" Type="nvarchar(max)" />
+          <Property Name="Strategy_verify" Type="nvarchar(max)" />
+          <Property Name="Response_occur_place" Type="nvarchar(max)" />
+          <Property Name="Confirm_complete" Type="nvarchar(max)" />
+          <Property Name="Status_approval" Type="int" />
+          <Property Name="IsNewest" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ProcessListId" Type="int" />
+          <Property Name="Process" Type="nvarchar(max)" />
+          <Property Name="Modify_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="Modify_date" Type="datetime" />
+          <Property Name="Comment_reject" Type="nvarchar(max)" />
+          <Property Name="ActionName" Type="nvarchar(max)" />
+          <Property Name="Next_Action_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="CanEdit" Type="int" />
+          <Property Name="Classify4M" Type="nvarchar(max)" />
+          <Property Name="Due_date" Type="date" />
+          <Property Name="Cause_occur" Type="nvarchar(max)" />
+          <Property Name="Delivery_history" Type="nvarchar(max)" />
+          <Property Name="Cause_outflow" Type="nvarchar(max)" />
+          <Property Name="Temp_measure" Type="nvarchar(max)" />
+          <Property Name="Outflow_countermeasure" Type="nvarchar(max)" />
+          <Property Name="Type_Form" Type="nvarchar" MaxLength="50" />
+          <Property Name="Containment_Action" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Claim__Create_by__33008CF0">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="Create_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Claim__Modify_by__33F4B129">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="Modify_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Claim__ProcessLi__35DCF99B">
+          <End Role="ProcessList" Type="Self.ProcessList" Multiplicity="0..1" />
+          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessList">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="ProcessListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClaimNotice">
+          <End Role="Claim" Type="Self.Claim" Multiplicity="0..1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Claim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="ClaimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentUser">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PositionUser">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesUser">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserNotice">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="Reciever" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Pro_NumberWaitMe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_list_claim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="start" Type="int" Mode="In" />
+          <Parameter Name="end" Type="int" Mode="In" />
+        </Function>
+        <Function Name="proc_list_claim_count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="filter" Type="nvarchar" Mode="In" />
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_list_claim_page" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="start" Type="int" Mode="In" />
+          <Parameter Name="end" Type="int" Mode="In" />
+          <Parameter Name="filter" Type="nvarchar" Mode="In" />
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="proc_search_claim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="nvarchar" Mode="In" />
+          <Parameter Name="filter" Type="nvarchar" Mode="In" />
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ClaimFormModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ODI" EntityType="Self.ODI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessList" EntityType="Self.ProcessList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TargetPPM" EntityType="Self.TargetPPM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeNG" EntityType="Self.TypeNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewestClaim" EntityType="Self.NewestClaim" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [NewestClaim].[RowNumber] AS [RowNumber], 
+    [NewestClaim].[Id] AS [Id], 
+    [NewestClaim].[No] AS [No], 
+    [NewestClaim].[Subject] AS [Subject], 
+    [NewestClaim].[Customer] AS [Customer], 
+    [NewestClaim].[Model_name] AS [Model_name], 
+    [NewestClaim].[Model_group] AS [Model_group], 
+    [NewestClaim].[Model_Id] AS [Model_Id], 
+    [NewestClaim].[Create_by] AS [Create_by], 
+    [NewestClaim].[Create_date] AS [Create_date], 
+    [NewestClaim].[Type] AS [Type], 
+    [NewestClaim].[Occur_content] AS [Occur_content], 
+    [NewestClaim].[Occur_date] AS [Occur_date], 
+    [NewestClaim].[Image_NG] AS [Image_NG], 
+    [NewestClaim].[Occur_place] AS [Occur_place], 
+    [NewestClaim].[Person_detect] AS [Person_detect], 
+    [NewestClaim].[Number_NG] AS [Number_NG], 
+    [NewestClaim].[Number_test] AS [Number_test], 
+    [NewestClaim].[Occur_frequency] AS [Occur_frequency], 
+    [NewestClaim].[Date_make] AS [Date_make], 
+    [NewestClaim].[Confirm_artifact] AS [Confirm_artifact], 
+    [NewestClaim].[Point_change] AS [Point_change], 
+    [NewestClaim].[Retest] AS [Retest], 
+    [NewestClaim].[Confirm_factor] AS [Confirm_factor], 
+    [NewestClaim].[Analysis_factor] AS [Analysis_factor], 
+    [NewestClaim].[Reason_occur] AS [Reason_occur], 
+    [NewestClaim].[Reason_error] AS [Reason_error], 
+    [NewestClaim].[Step_occur] AS [Step_occur], 
+    [NewestClaim].[Step_error] AS [Step_error], 
+    [NewestClaim].[Strategy_IsPokayoke] AS [Strategy_IsPokayoke], 
+    [NewestClaim].[Strategy_temp] AS [Strategy_temp], 
+    [NewestClaim].[Strategy_longtime] AS [Strategy_longtime], 
+    [NewestClaim].[Strategy_follow] AS [Strategy_follow], 
+    [NewestClaim].[Strategy_verify] AS [Strategy_verify], 
+    [NewestClaim].[Response_occur_place] AS [Response_occur_place], 
+    [NewestClaim].[Confirm_complete] AS [Confirm_complete], 
+    [NewestClaim].[Status_approval] AS [Status_approval], 
+    [NewestClaim].[IsNewest] AS [IsNewest], 
+    [NewestClaim].[Status] AS [Status], 
+    [NewestClaim].[ProcessListId] AS [ProcessListId], 
+    [NewestClaim].[Process] AS [Process], 
+    [NewestClaim].[Modify_by] AS [Modify_by], 
+    [NewestClaim].[Modify_date] AS [Modify_date], 
+    [NewestClaim].[Comment_reject] AS [Comment_reject], 
+    [NewestClaim].[ActionName] AS [ActionName], 
+    [NewestClaim].[Next_Action_by] AS [Next_Action_by], 
+    [NewestClaim].[CanEdit] AS [CanEdit], 
+    [NewestClaim].[Classify4M] AS [Classify4M], 
+    [NewestClaim].[Due_date] AS [Due_date], 
+    [NewestClaim].[Cause_occur] AS [Cause_occur], 
+    [NewestClaim].[Delivery_history] AS [Delivery_history], 
+    [NewestClaim].[Cause_outflow] AS [Cause_outflow], 
+    [NewestClaim].[Temp_measure] AS [Temp_measure], 
+    [NewestClaim].[Outflow_countermeasure] AS [Outflow_countermeasure], 
+    [NewestClaim].[Type_Form] AS [Type_Form], 
+    [NewestClaim].[Containment_Action] AS [Containment_Action]
+    FROM [dbo].[NewestClaim] AS [NewestClaim]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Claim__Create_by__33008CF0" Association="Self.FK__Claim__Create_by__33008CF0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Claim" EntitySet="Claim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Claim__Modify_by__33F4B129" Association="Self.FK__Claim__Modify_by__33F4B129">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Claim" EntitySet="Claim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Claim__ProcessLi__35DCF99B" Association="Self.FK__Claim__ProcessLi__35DCF99B">
+            <End Role="ProcessList" EntitySet="ProcessList" />
+            <End Role="Claim" EntitySet="Claim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClaimNotice" Association="Self.FK_ClaimNotice">
+            <End Role="Claim" EntitySet="Claim" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentUser" Association="Self.FK_DepartmentUser">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PositionUser" Association="Self.FK_PositionUser">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesUser" Association="Self.FK_RolesUser">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserNotice" Association="Self.FK_UserNotice">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClaimFormModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="ClaimFormModel.FK_DepartmentUser" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reciever" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeContent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimId" Type="Int32" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <Property Name="IsRead" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="ClaimFormModel.FK_UserNotice" FromRole="Notice" ToRole="User" />
+          <NavigationProperty Name="Claim" Relationship="ClaimFormModel.FK_ClaimNotice" FromRole="Notice" ToRole="Claim" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="ClaimFormModel.FK_PositionUser" FromRole="Position" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CanEdit" Type="Int32" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProcessList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Process" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Claims" Relationship="ClaimFormModel.FK__Claim__ProcessLi__35DCF99B" FromRole="ProcessList" ToRole="Claim" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="ClaimFormModel.FK_RolesUser" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityContainer Name="ClaimFormEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Notices" EntityType="Self.Notice" />
+          <EntitySet Name="Positions" EntityType="Self.Position" />
+          <EntitySet Name="Processes" EntityType="Self.Process" />
+          <EntitySet Name="ProcessLists" EntityType="Self.ProcessList" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <FunctionImport Name="Pro_NumberWaitMe" ReturnType="Collection(Int32)">
+          <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_list_claim" ReturnType="Collection(ClaimFormModel.proc_list_claim_Result)">
+            <Parameter Name="start" Mode="In" Type="Int32" />
+            <Parameter Name="end" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_list_claim_count" ReturnType="Collection(Int32)">
+            <Parameter Name="filter" Mode="In" Type="String" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_list_claim_page" ReturnType="Collection(ClaimFormModel.proc_list_claim_page_Result)">
+            <Parameter Name="start" Mode="In" Type="Int32" />
+            <Parameter Name="end" Mode="In" Type="Int32" />
+            <Parameter Name="filter" Mode="In" Type="String" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_search_claim" ReturnType="Collection(Int32)">
+            <Parameter Name="search" Mode="In" Type="String" />
+            <Parameter Name="filter" Mode="In" Type="String" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="sysdiagrams" EntityType="ClaimFormModel.sysdiagram" />
+          <EntitySet Name="Users" EntityType="ClaimFormModel.User" />
+          <AssociationSet Name="FK_DepartmentUser" Association="ClaimFormModel.FK_DepartmentUser">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserNotice" Association="ClaimFormModel.FK_UserNotice">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Notice" EntitySet="Notices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PositionUser" Association="ClaimFormModel.FK_PositionUser">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesUser" Association="ClaimFormModel.FK_RolesUser">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Claims" EntityType="ClaimFormModel.Claim" />
+          <EntitySet Name="NewestClaims" EntityType="ClaimFormModel.NewestClaim" />
+          <AssociationSet Name="FK__Claim__Create_by__33008CF0" Association="ClaimFormModel.FK__Claim__Create_by__33008CF0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Claim" EntitySet="Claims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Claim__Modify_by__33F4B129" Association="ClaimFormModel.FK__Claim__Modify_by__33F4B129">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Claim" EntitySet="Claims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Claim__ProcessLi__35DCF99B" Association="ClaimFormModel.FK__Claim__ProcessLi__35DCF99B">
+            <End Role="ProcessList" EntitySet="ProcessLists" />
+            <End Role="Claim" EntitySet="Claims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClaimNotice" Association="ClaimFormModel.FK_ClaimNotice">
+            <End Role="Claim" EntitySet="Claims" />
+            <End Role="Notice" EntitySet="Notices" />
+          </AssociationSet>
+          <EntitySet Name="TypeNGs" EntityType="ClaimFormModel.TypeNG" />
+          <EntitySet Name="Areas" EntityType="ClaimFormModel.Area" />
+          <EntitySet Name="ODIs" EntityType="ClaimFormModel.ODI" />
+          <EntitySet Name="TargetPPMs" EntityType="ClaimFormModel.TargetPPM" />
+          </EntityContainer>
+        <ComplexType Name="proc_list_claim_Result">
+          <Property Type="Int64" Name="RowNumberAll" Nullable="true" />
+          <Property Type="String" Name="No" Nullable="true" />
+          <Property Type="DateTime" Name="Create_date" Nullable="true" />
+          <Property Type="String" Name="Customer" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" />
+          <Property Type="String" Name="Model_name" Nullable="true" />
+          <Property Type="String" Name="Model_group" Nullable="true" />
+          <Property Type="String" Name="Subject" Nullable="true" />
+          <Property Type="DateTime" Name="Due_date" Nullable="true" />
+          <Property Type="Int32" Name="Status_approval" Nullable="true" />
+          <Property Type="String" Name="Classify4M" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_list_claim_page_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="No" Nullable="true" />
+          <Property Type="String" Name="Subject" Nullable="true" />
+          <Property Type="String" Name="Customer" Nullable="true" />
+          <Property Type="String" Name="Model_name" Nullable="true" />
+          <Property Type="String" Name="Model_group" Nullable="true" />
+          <Property Type="String" Name="Model_Id" Nullable="true" />
+          <Property Type="String" Name="Create_by" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Create_date" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" />
+          <Property Type="String" Name="Occur_content" Nullable="true" />
+          <Property Type="DateTime" Name="Occur_date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Image_NG" Nullable="true" />
+          <Property Type="String" Name="Occur_place" Nullable="true" />
+          <Property Type="String" Name="Person_detect" Nullable="true" />
+          <Property Type="Int32" Name="Number_NG" Nullable="true" />
+          <Property Type="Int32" Name="Number_test" Nullable="true" />
+          <Property Type="String" Name="Occur_frequency" Nullable="true" />
+          <Property Type="DateTime" Name="Date_make" Nullable="true" />
+          <Property Type="String" Name="Confirm_artifact" Nullable="true" />
+          <Property Type="String" Name="Point_change" Nullable="true" />
+          <Property Type="String" Name="Retest" Nullable="true" />
+          <Property Type="String" Name="Confirm_factor" Nullable="true" />
+          <Property Type="String" Name="Analysis_factor" Nullable="true" />
+          <Property Type="String" Name="Reason_occur" Nullable="true" />
+          <Property Type="String" Name="Reason_error" Nullable="true" />
+          <Property Type="String" Name="Step_occur" Nullable="true" />
+          <Property Type="String" Name="Step_error" Nullable="true" />
+          <Property Type="Int32" Name="Strategy_IsPokayoke" Nullable="true" />
+          <Property Type="String" Name="Strategy_temp" Nullable="true" />
+          <Property Type="String" Name="Strategy_longtime" Nullable="true" />
+          <Property Type="String" Name="Strategy_follow" Nullable="true" />
+          <Property Type="String" Name="Strategy_verify" Nullable="true" />
+          <Property Type="String" Name="Response_occur_place" Nullable="true" />
+          <Property Type="String" Name="Confirm_complete" Nullable="true" />
+          <Property Type="Int32" Name="Status_approval" Nullable="true" />
+          <Property Type="Int32" Name="IsNewest" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="ProcessListId" Nullable="true" />
+          <Property Type="String" Name="Process" Nullable="true" />
+          <Property Type="String" Name="Modify_by" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Modify_date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Comment_reject" Nullable="true" />
+          <Property Type="String" Name="ActionName" Nullable="true" />
+          <Property Type="String" Name="Next_Action_by" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CanEdit" Nullable="true" />
+          <Property Type="String" Name="Classify4M" Nullable="true" />
+          <Property Type="DateTime" Name="Due_date" Nullable="true" />
+          <Property Type="Int64" Name="RowNumberAll" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department_id" Type="Int32" />
+          <Property Name="Position_id" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="MailCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="ClaimFormModel.FK_DepartmentUser" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="Notices" Relationship="ClaimFormModel.FK_UserNotice" FromRole="User" ToRole="Notice" />
+          <NavigationProperty Name="Position" Relationship="ClaimFormModel.FK_PositionUser" FromRole="User" ToRole="Position" />
+          <NavigationProperty Name="Role" Relationship="ClaimFormModel.FK_RolesUser" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Claims" Relationship="ClaimFormModel.FK__Claim__Create_by__33008CF0" FromRole="User" ToRole="Claim" />
+          <NavigationProperty Name="Claims1" Relationship="ClaimFormModel.FK__Claim__Modify_by__33F4B129" FromRole="User" ToRole="Claim" />
+          </EntityType>
+        <Association Name="FK_DepartmentUser">
+          <End Type="ClaimFormModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserNotice">
+          <End Type="ClaimFormModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.Notice" Role="Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="Reciever" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PositionUser">
+          <End Type="ClaimFormModel.Position" Role="Position" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesUser">
+          <End Type="ClaimFormModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Claim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_group" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Create_date" Type="DateTime" Precision="0" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_date" Type="DateTime" Precision="3" />
+          <Property Name="Image_NG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Person_detect" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Number_NG" Type="Int32" />
+          <Property Name="Number_test" Type="Int32" />
+          <Property Name="Occur_frequency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_make" Type="DateTime" Precision="0" />
+          <Property Name="Confirm_artifact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point_change" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Retest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Confirm_factor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Analysis_factor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reason_occur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reason_error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Step_occur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Step_error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_IsPokayoke" Type="Int32" />
+          <Property Name="Strategy_temp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_longtime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_follow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_verify" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Response_occur_place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Confirm_complete" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status_approval" Type="Int32" />
+          <Property Name="IsNewest" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ProcessListId" Type="Int32" />
+          <Property Name="Process" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modify_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Modify_date" Type="DateTime" Precision="3" />
+          <Property Name="Comment_reject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Next_Action_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CanEdit" Type="Int32" />
+          <Property Name="Classify4M" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Due_date" Type="DateTime" Precision="0" />
+          <Property Name="Cause_occur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Delivery_history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cause_outflow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Temp_measure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Outflow_countermeasure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Containment_Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileAttach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ClaimFormModel.FK__Claim__Create_by__33008CF0" FromRole="Claim" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ClaimFormModel.FK__Claim__Modify_by__33F4B129" FromRole="Claim" ToRole="User" />
+          <NavigationProperty Name="ProcessList" Relationship="ClaimFormModel.FK__Claim__ProcessLi__35DCF99B" FromRole="Claim" ToRole="ProcessList" />
+          <NavigationProperty Name="Notices" Relationship="ClaimFormModel.FK_ClaimNotice" FromRole="Claim" ToRole="Notice" />
+        </EntityType>
+        <EntityType Name="NewestClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RowNumber" Type="Int64" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_group" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Create_date" Type="DateTime" Precision="0" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_date" Type="DateTime" Precision="3" />
+          <Property Name="Image_NG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Person_detect" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Number_NG" Type="Int32" />
+          <Property Name="Number_test" Type="Int32" />
+          <Property Name="Occur_frequency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_make" Type="DateTime" Precision="0" />
+          <Property Name="Confirm_artifact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point_change" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Retest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Confirm_factor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Analysis_factor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reason_occur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reason_error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Step_occur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Step_error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_IsPokayoke" Type="Int32" />
+          <Property Name="Strategy_temp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_longtime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_follow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strategy_verify" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Response_occur_place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Confirm_complete" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status_approval" Type="Int32" />
+          <Property Name="IsNewest" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ProcessListId" Type="Int32" />
+          <Property Name="Process" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modify_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Modify_date" Type="DateTime" Precision="3" />
+          <Property Name="Comment_reject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Next_Action_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CanEdit" Type="Int32" />
+          <Property Name="Classify4M" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Due_date" Type="DateTime" Precision="0" />
+          <Property Name="Cause_occur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Delivery_history" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cause_outflow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Temp_measure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Outflow_countermeasure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Containment_Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Claim__Create_by__33008CF0">
+          <End Type="ClaimFormModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.Claim" Role="Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="Create_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Claim__Modify_by__33F4B129">
+          <End Type="ClaimFormModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.Claim" Role="Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="Modify_by" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Claim__ProcessLi__35DCF99B">
+          <End Type="ClaimFormModel.ProcessList" Role="ProcessList" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.Claim" Role="Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessList">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="ProcessListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClaimNotice">
+          <End Type="ClaimFormModel.Claim" Role="Claim" Multiplicity="0..1" />
+          <End Type="ClaimFormModel.Notice" Role="Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Claim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="ClaimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TypeNG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeNG1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="JP" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ODI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOccur" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Customer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Shift" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Station" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Inspector" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupModel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModelName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WOQty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckNumber" Type="Int32" Nullable="false" />
+          <Property Name="NumberNG" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Occur_Line" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Serial_Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Defection" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NG_Photo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OK_Photo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sample_Form" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsConfirm" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TargetPPM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClaimFormModelStoreContainer" CdmEntityContainer="ClaimFormEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="ClaimFormModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notices">
+            <EntityTypeMapping TypeName="ClaimFormModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+                <ScalarProperty Name="NoticeContent" ColumnName="NoticeContent" />
+                <ScalarProperty Name="ClaimId" ColumnName="ClaimId" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="ClaimFormModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="ClaimFormModel.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessLists">
+            <EntityTypeMapping TypeName="ClaimFormModel.ProcessList">
+              <MappingFragment StoreEntitySet="ProcessList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ClaimFormModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Pro_NumberWaitMe" FunctionName="ClaimFormModel.Store.Pro_NumberWaitMe" />
+          <FunctionImportMapping FunctionImportName="proc_list_claim" FunctionName="ClaimFormModel.Store.proc_list_claim">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClaimFormModel.proc_list_claim_Result">
+                <ScalarProperty Name="RowNumberAll" ColumnName="RowNumberAll" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+                <ScalarProperty Name="Model_group" ColumnName="Model_group" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Due_date" ColumnName="Due_date" />
+                <ScalarProperty Name="Status_approval" ColumnName="Status_approval" />
+                <ScalarProperty Name="Classify4M" ColumnName="Classify4M" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_list_claim_count" FunctionName="ClaimFormModel.Store.proc_list_claim_count" />
+          <FunctionImportMapping FunctionImportName="proc_list_claim_page" FunctionName="ClaimFormModel.Store.proc_list_claim_page">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClaimFormModel.proc_list_claim_page_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+                <ScalarProperty Name="Model_group" ColumnName="Model_group" />
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Create_by" ColumnName="Create_by" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Occur_content" ColumnName="Occur_content" />
+                <ScalarProperty Name="Occur_date" ColumnName="Occur_date" />
+                <ScalarProperty Name="Image_NG" ColumnName="Image_NG" />
+                <ScalarProperty Name="Occur_place" ColumnName="Occur_place" />
+                <ScalarProperty Name="Person_detect" ColumnName="Person_detect" />
+                <ScalarProperty Name="Number_NG" ColumnName="Number_NG" />
+                <ScalarProperty Name="Number_test" ColumnName="Number_test" />
+                <ScalarProperty Name="Occur_frequency" ColumnName="Occur_frequency" />
+                <ScalarProperty Name="Date_make" ColumnName="Date_make" />
+                <ScalarProperty Name="Confirm_artifact" ColumnName="Confirm_artifact" />
+                <ScalarProperty Name="Point_change" ColumnName="Point_change" />
+                <ScalarProperty Name="Retest" ColumnName="Retest" />
+                <ScalarProperty Name="Confirm_factor" ColumnName="Confirm_factor" />
+                <ScalarProperty Name="Analysis_factor" ColumnName="Analysis_factor" />
+                <ScalarProperty Name="Reason_occur" ColumnName="Reason_occur" />
+                <ScalarProperty Name="Reason_error" ColumnName="Reason_error" />
+                <ScalarProperty Name="Step_occur" ColumnName="Step_occur" />
+                <ScalarProperty Name="Step_error" ColumnName="Step_error" />
+                <ScalarProperty Name="Strategy_IsPokayoke" ColumnName="Strategy_IsPokayoke" />
+                <ScalarProperty Name="Strategy_temp" ColumnName="Strategy_temp" />
+                <ScalarProperty Name="Strategy_longtime" ColumnName="Strategy_longtime" />
+                <ScalarProperty Name="Strategy_follow" ColumnName="Strategy_follow" />
+                <ScalarProperty Name="Strategy_verify" ColumnName="Strategy_verify" />
+                <ScalarProperty Name="Response_occur_place" ColumnName="Response_occur_place" />
+                <ScalarProperty Name="Confirm_complete" ColumnName="Confirm_complete" />
+                <ScalarProperty Name="Status_approval" ColumnName="Status_approval" />
+                <ScalarProperty Name="IsNewest" ColumnName="IsNewest" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProcessListId" ColumnName="ProcessListId" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="Modify_by" ColumnName="Modify_by" />
+                <ScalarProperty Name="Modify_date" ColumnName="Modify_date" />
+                <ScalarProperty Name="Comment_reject" ColumnName="Comment_reject" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="Next_Action_by" ColumnName="Next_Action_by" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="Classify4M" ColumnName="Classify4M" />
+                <ScalarProperty Name="Due_date" ColumnName="Due_date" />
+                <ScalarProperty Name="RowNumberAll" ColumnName="RowNumberAll" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_search_claim" FunctionName="ClaimFormModel.Store.proc_search_claim" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ClaimFormModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ClaimFormModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="MailCC" ColumnName="MailCC" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Position_id" ColumnName="Position_id" />
+                <ScalarProperty Name="Department_id" ColumnName="Department_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Claims">
+            <EntityTypeMapping TypeName="ClaimFormModel.Claim">
+              <MappingFragment StoreEntitySet="Claim">
+                <ScalarProperty Name="FileAttach" ColumnName="FileAttach" />
+                <ScalarProperty Name="Containment_Action" ColumnName="Containment_Action" />
+                <ScalarProperty Name="Type_Form" ColumnName="Type_Form" />
+                <ScalarProperty Name="Outflow_countermeasure" ColumnName="Outflow_countermeasure" />
+                <ScalarProperty Name="Temp_measure" ColumnName="Temp_measure" />
+                <ScalarProperty Name="Cause_outflow" ColumnName="Cause_outflow" />
+                <ScalarProperty Name="Delivery_history" ColumnName="Delivery_history" />
+                <ScalarProperty Name="Cause_occur" ColumnName="Cause_occur" />
+                <ScalarProperty Name="Due_date" ColumnName="Due_date" />
+                <ScalarProperty Name="Classify4M" ColumnName="Classify4M" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="Next_Action_by" ColumnName="Next_Action_by" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="Comment_reject" ColumnName="Comment_reject" />
+                <ScalarProperty Name="Modify_date" ColumnName="Modify_date" />
+                <ScalarProperty Name="Modify_by" ColumnName="Modify_by" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="ProcessListId" ColumnName="ProcessListId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsNewest" ColumnName="IsNewest" />
+                <ScalarProperty Name="Status_approval" ColumnName="Status_approval" />
+                <ScalarProperty Name="Confirm_complete" ColumnName="Confirm_complete" />
+                <ScalarProperty Name="Response_occur_place" ColumnName="Response_occur_place" />
+                <ScalarProperty Name="Strategy_verify" ColumnName="Strategy_verify" />
+                <ScalarProperty Name="Strategy_follow" ColumnName="Strategy_follow" />
+                <ScalarProperty Name="Strategy_longtime" ColumnName="Strategy_longtime" />
+                <ScalarProperty Name="Strategy_temp" ColumnName="Strategy_temp" />
+                <ScalarProperty Name="Strategy_IsPokayoke" ColumnName="Strategy_IsPokayoke" />
+                <ScalarProperty Name="Step_error" ColumnName="Step_error" />
+                <ScalarProperty Name="Step_occur" ColumnName="Step_occur" />
+                <ScalarProperty Name="Reason_error" ColumnName="Reason_error" />
+                <ScalarProperty Name="Reason_occur" ColumnName="Reason_occur" />
+                <ScalarProperty Name="Analysis_factor" ColumnName="Analysis_factor" />
+                <ScalarProperty Name="Confirm_factor" ColumnName="Confirm_factor" />
+                <ScalarProperty Name="Retest" ColumnName="Retest" />
+                <ScalarProperty Name="Point_change" ColumnName="Point_change" />
+                <ScalarProperty Name="Confirm_artifact" ColumnName="Confirm_artifact" />
+                <ScalarProperty Name="Date_make" ColumnName="Date_make" />
+                <ScalarProperty Name="Occur_frequency" ColumnName="Occur_frequency" />
+                <ScalarProperty Name="Number_test" ColumnName="Number_test" />
+                <ScalarProperty Name="Number_NG" ColumnName="Number_NG" />
+                <ScalarProperty Name="Person_detect" ColumnName="Person_detect" />
+                <ScalarProperty Name="Occur_place" ColumnName="Occur_place" />
+                <ScalarProperty Name="Image_NG" ColumnName="Image_NG" />
+                <ScalarProperty Name="Occur_date" ColumnName="Occur_date" />
+                <ScalarProperty Name="Occur_content" ColumnName="Occur_content" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Create_by" ColumnName="Create_by" />
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Model_group" ColumnName="Model_group" />
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewestClaims">
+            <EntityTypeMapping TypeName="ClaimFormModel.NewestClaim">
+              <MappingFragment StoreEntitySet="NewestClaim">
+                <ScalarProperty Name="Containment_Action" ColumnName="Containment_Action" />
+                <ScalarProperty Name="Type_Form" ColumnName="Type_Form" />
+                <ScalarProperty Name="Outflow_countermeasure" ColumnName="Outflow_countermeasure" />
+                <ScalarProperty Name="Temp_measure" ColumnName="Temp_measure" />
+                <ScalarProperty Name="Cause_outflow" ColumnName="Cause_outflow" />
+                <ScalarProperty Name="Delivery_history" ColumnName="Delivery_history" />
+                <ScalarProperty Name="Cause_occur" ColumnName="Cause_occur" />
+                <ScalarProperty Name="Due_date" ColumnName="Due_date" />
+                <ScalarProperty Name="Classify4M" ColumnName="Classify4M" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="Next_Action_by" ColumnName="Next_Action_by" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="Comment_reject" ColumnName="Comment_reject" />
+                <ScalarProperty Name="Modify_date" ColumnName="Modify_date" />
+                <ScalarProperty Name="Modify_by" ColumnName="Modify_by" />
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="ProcessListId" ColumnName="ProcessListId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsNewest" ColumnName="IsNewest" />
+                <ScalarProperty Name="Status_approval" ColumnName="Status_approval" />
+                <ScalarProperty Name="Confirm_complete" ColumnName="Confirm_complete" />
+                <ScalarProperty Name="Response_occur_place" ColumnName="Response_occur_place" />
+                <ScalarProperty Name="Strategy_verify" ColumnName="Strategy_verify" />
+                <ScalarProperty Name="Strategy_follow" ColumnName="Strategy_follow" />
+                <ScalarProperty Name="Strategy_longtime" ColumnName="Strategy_longtime" />
+                <ScalarProperty Name="Strategy_temp" ColumnName="Strategy_temp" />
+                <ScalarProperty Name="Strategy_IsPokayoke" ColumnName="Strategy_IsPokayoke" />
+                <ScalarProperty Name="Step_error" ColumnName="Step_error" />
+                <ScalarProperty Name="Step_occur" ColumnName="Step_occur" />
+                <ScalarProperty Name="Reason_error" ColumnName="Reason_error" />
+                <ScalarProperty Name="Reason_occur" ColumnName="Reason_occur" />
+                <ScalarProperty Name="Analysis_factor" ColumnName="Analysis_factor" />
+                <ScalarProperty Name="Confirm_factor" ColumnName="Confirm_factor" />
+                <ScalarProperty Name="Retest" ColumnName="Retest" />
+                <ScalarProperty Name="Point_change" ColumnName="Point_change" />
+                <ScalarProperty Name="Confirm_artifact" ColumnName="Confirm_artifact" />
+                <ScalarProperty Name="Date_make" ColumnName="Date_make" />
+                <ScalarProperty Name="Occur_frequency" ColumnName="Occur_frequency" />
+                <ScalarProperty Name="Number_test" ColumnName="Number_test" />
+                <ScalarProperty Name="Number_NG" ColumnName="Number_NG" />
+                <ScalarProperty Name="Person_detect" ColumnName="Person_detect" />
+                <ScalarProperty Name="Occur_place" ColumnName="Occur_place" />
+                <ScalarProperty Name="Image_NG" ColumnName="Image_NG" />
+                <ScalarProperty Name="Occur_date" ColumnName="Occur_date" />
+                <ScalarProperty Name="Occur_content" ColumnName="Occur_content" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="Create_by" ColumnName="Create_by" />
+                <ScalarProperty Name="Model_Id" ColumnName="Model_Id" />
+                <ScalarProperty Name="Model_group" ColumnName="Model_group" />
+                <ScalarProperty Name="Model_name" ColumnName="Model_name" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeNGs">
+            <EntityTypeMapping TypeName="ClaimFormModel.TypeNG">
+              <MappingFragment StoreEntitySet="TypeNG">
+                <ScalarProperty Name="JP" ColumnName="JP" />
+                <ScalarProperty Name="TypeNG1" ColumnName="TypeNG" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="ClaimFormModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Area1" ColumnName="Area" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ODIs">
+            <EntityTypeMapping TypeName="ClaimFormModel.ODI">
+              <MappingFragment StoreEntitySet="ODI">
+                <ScalarProperty Name="IsConfirm" ColumnName="IsConfirm" />
+                <ScalarProperty Name="Sample_Form" ColumnName="Sample_Form" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="OK_Photo" ColumnName="OK_Photo" />
+                <ScalarProperty Name="NG_Photo" ColumnName="NG_Photo" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Defection" ColumnName="Defection" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Serial_Number" ColumnName="Serial_Number" />
+                <ScalarProperty Name="Occur_Line" ColumnName="Occur_Line" />
+                <ScalarProperty Name="Occur_Time" ColumnName="Occur_Time" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="NumberNG" ColumnName="NumberNG" />
+                <ScalarProperty Name="CheckNumber" ColumnName="CheckNumber" />
+                <ScalarProperty Name="WOQty" ColumnName="WOQty" />
+                <ScalarProperty Name="WO" ColumnName="WO" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="GroupModel" ColumnName="GroupModel" />
+                <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+                <ScalarProperty Name="Station" ColumnName="Station" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="DateOccur" ColumnName="DateOccur" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TargetPPMs">
+            <EntityTypeMapping TypeName="ClaimFormModel.TargetPPM">
+              <MappingFragment StoreEntitySet="TargetPPM">
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CreateNewUser" xml:space="preserve">
+    <value>Tạo User mới</value>
+  </data>
+  <data name="CreateProcess" xml:space="preserve">
+    <value>Tạo Process</value>
+  </data>
+  <data name="CreateProcessTemplate" xml:space="preserve">
+    <value>Tạo Form Mẫu</value>
+  </data>
+  <data name="Dept" xml:space="preserve">
+    <value>Phòng  ban</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Bản nháp</value>
+  </data>
+  <data name="Error_Common" xml:space="preserve">
+    <value>Có lỗi xảy ra!</value>
+  </data>
+  <data name="Error_Lack_Info" xml:space="preserve">
+    <value>Bạn chưa điền đầy đủ thông tin hoặc bị sai định dạng</value>
+  </data>
+  <data name="Error_NeedSelectNextActionBy" xml:space="preserve">
+    <value>Bạn chưa chọn người thực hiện bước tiếp theo!</value>
+  </data>
+  <data name="Error_NotExistUser" xml:space="preserve">
+    <value>Không tồn tại user thực hiện bước tiếp theo!</value>
+  </data>
+  <data name="Error_Send_Notice" xml:space="preserve">
+    <value>Gửi thông báo bị lỗi</value>
+  </data>
+  <data name="Error_User_Not_Exist" xml:space="preserve">
+    <value>Không tồn tại user này!</value>
+  </data>
+  <data name="Field_Analysis_factor" xml:space="preserve">
+    <value>Phân tích yếu tố phát sinh　要因分析</value>
+  </data>
+  <data name="Field_Classify4M" xml:space="preserve">
+    <value>Phân loại 4M　４M分析</value>
+  </data>
+  <data name="Field_Comment_reject" xml:space="preserve">
+    <value>Reason Reject</value>
+  </data>
+  <data name="Field_Confirm_artifact" xml:space="preserve">
+    <value>Xác nhận hiện vật　現品確認結果</value>
+  </data>
+  <data name="Field_Confirm_factor" xml:space="preserve">
+    <value>Phân tích yếu tố phát sinh　要因分析</value>
+  </data>
+  <data name="Field_Create_by" xml:space="preserve">
+    <value>Lập bởi　作成者</value>
+  </data>
+  <data name="Field_Create_date" xml:space="preserve">
+    <value>Ngày tạo　報告書作成日</value>
+  </data>
+  <data name="Field_Customer" xml:space="preserve">
+    <value>Khách hàng　顧客名</value>
+  </data>
+  <data name="Field_Date_make" xml:space="preserve">
+    <value>Ngày sản xuất　生産日</value>
+  </data>
+  <data name="Field_Due_date" xml:space="preserve">
+    <value>Due date</value>
+  </data>
+  <data name="Field_Group_Model" xml:space="preserve">
+    <value>Nhóm Model　機種</value>
+  </data>
+  <data name="Field_Image_NG" xml:space="preserve">
+    <value>Hình ảnh hàng NG　NG写真</value>
+  </data>
+  <data name="Field_Model" xml:space="preserve">
+    <value>Tên Model　モデル名</value>
+  </data>
+  <data name="Field_Modify_by" xml:space="preserve">
+    <value>Người chỉnh sửa cuối cùng　 　最終更新者</value>
+  </data>
+  <data name="Field_Modify_date" xml:space="preserve">
+    <value>Ngày chỉnh sửa cuối cùng  　最終更新日</value>
+  </data>
+  <data name="Field_No" xml:space="preserve">
+    <value>Mã quản lý　管理番号</value>
+  </data>
+  <data name="Field_Number_NG" xml:space="preserve">
+    <value>Số lượng NG　　NG数</value>
+  </data>
+  <data name="Field_Number_test" xml:space="preserve">
+    <value>Số lượng kiểm tra　検査数</value>
+  </data>
+  <data name="Field_Occur_content" xml:space="preserve">
+    <value>Nội dung phát sinh　不良内容</value>
+  </data>
+  <data name="Field_Occur_date" xml:space="preserve">
+    <value>Ngày giờ phát sinh　発生日</value>
+  </data>
+  <data name="Field_Occur_frequency" xml:space="preserve">
+    <value>Tần xuất phát sinh　発生状況</value>
+  </data>
+  <data name="Field_Occur_place" xml:space="preserve">
+    <value>Địa điểm phát sinh　発生場所</value>
+  </data>
+  <data name="Field_Person_detect" xml:space="preserve">
+    <value>Người thông tin　　　発信者</value>
+  </data>
+  <data name="Field_Point_change" xml:space="preserve">
+    <value>Điều tra điểm thay đổi</value>
+  </data>
+  <data name="Field_Reason_error" xml:space="preserve">
+    <value>Nguyên nhân lọt lỗi　　流出原因</value>
+  </data>
+  <data name="Field_Reason_occur" xml:space="preserve">
+    <value>Nguyên nhân phát sinh　発生原因</value>
+  </data>
+  <data name="Field_Response_occur_place" xml:space="preserve">
+    <value>Phản hồi nơi phát sinh</value>
+  </data>
+  <data name="Field_Retest" xml:space="preserve">
+    <value>Tái thử nghiệm</value>
+  </data>
+  <data name="Field_Status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="Field_Step_error" xml:space="preserve">
+    <value>Các bước lọt lỗi</value>
+  </data>
+  <data name="Field_Step_occur" xml:space="preserve">
+    <value>Các bước phát sinh và lọt lỗi　発生のメカニズム</value>
+  </data>
+  <data name="Field_Strategy_follow" xml:space="preserve">
+    <value>Triển khai theo bề ngang</value>
+  </data>
+  <data name="Field_Strategy_IsPokayoke" xml:space="preserve">
+    <value>Có áp dụng Pokayoke?　 ポカ除けの適用・不適用</value>
+  </data>
+  <data name="Field_Strategy_longtime" xml:space="preserve">
+    <value>Đối sách lâu dài　　恒久対策</value>
+  </data>
+  <data name="Field_Strategy_temp" xml:space="preserve">
+    <value>Đối sách tạm thời　暫定対策</value>
+  </data>
+  <data name="Field_Subject" xml:space="preserve">
+    <value>Chủ đề（nội dung lỗi) 不良内容</value>
+  </data>
+  <data name="Field_Type" xml:space="preserve">
+    <value>Phân loại　不良区分（Inform/Claim)</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Xin chào</value>
+  </data>
+  <data name="Image_NGRequired" xml:space="preserve">
+    <value>Yêu cầu Image NG</value>
+  </data>
+  <data name="Image_NG_AttachRequired" xml:space="preserve">
+    <value>Phải chọn Image NG</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="MyClaim" xml:space="preserve">
+    <value>Claim của tôi tạo</value>
+  </data>
+  <data name="NoRequired" xml:space="preserve">
+    <value>Chưa nhập Mã quản lý</value>
+  </data>
+  <data name="Notice_Approve" xml:space="preserve">
+    <value>{0} Vừa gửi cho bạn 1 yêu cầu số {1}!</value>
+  </data>
+  <data name="Notice_Create_Claim" xml:space="preserve">
+    <value>Bạn vừa tạo thành công Claim {0}</value>
+  </data>
+  <data name="Notice_Modify_Claim" xml:space="preserve">
+    <value>Bạn vừa sửa thành công Claim {0}</value>
+  </data>
+  <data name="Notice_Reject" xml:space="preserve">
+    <value>{0} Vừa hủy  bỏ yêu cầu của bạn số {1}!</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Pos" xml:space="preserve">
+    <value>Vị trí</value>
+  </data>
+  <data name="Reason_Reject" xml:space="preserve">
+    <value>Lý do Reject</value>
+  </data>
+  <data name="Select_Step_To_Reject" xml:space="preserve">
+    <value>Chọn bước để reject</value>
+  </data>
+  <data name="StaffCode" xml:space="preserve">
+    <value>Mã nhân viên</value>
+  </data>
+  <data name="Summary_Information" xml:space="preserve">
+    <value>Thông tin chung</value>
+  </data>
+  <data name="Type_Normal" xml:space="preserve">
+    <value>Inform</value>
+  </data>
+  <data name="Type_Serious" xml:space="preserve">
+    <value>Claim</value>
+  </data>
+  <data name="UserSetting" xml:space="preserve">
+    <value>Cài đặt người dùng</value>
+  </data>
+  <data name="WaittingMe" xml:space="preserve">
+    <value>Claim đang chờ tôi</value>
+  </data>
+  <data name="Frequence_occur_First" xml:space="preserve">
+    <value>Phát sinh lần đầu</value>
+  </data>
+  <data name="Frequence_occur_recur" xml:space="preserve">
+    <value>Tái phát</value>
+  </data>
+  <data name="Title_Occur_Status" xml:space="preserve">
+    <value>①TÌNH TRẠNG PHÁT SINH (HIỆN TƯỢNG - NỘI DUNG - SỐ LƯỢNG PHÁT SINH - NỘI DUNG XỬ LÝ)
+発 生 状 況 (現象・訴え内容・発生件数・処置内容)</value>
+  </data>
+  <data name="Title_Understand_Issus" xml:space="preserve">
+    <value>②NẮM RÕ THỰC TRẠNG（KẾT QUẢ XÁC NHẬN LINH KIỆN・PHÂN TÍCH NGUYÊN NHÂN・TÌNH HÌNH CHẤT LƯỢNG HÀNG ĐANG SX）
+事実の把握（部品の確認結果・要因分析・生産品の品質状況）</value>
+  </data>
+  <data name="Title_Strategy" xml:space="preserve">
+    <value>④ ĐỐI SÁCH THÍCH HỢP（NỘI DUNG ĐỐI SÁCH・DỰ TÍNH HIỆU QUẢ）
+適 切 な 対 策 (対策内容・効果予測)</value>
+  </data>
+  <data name="Title_Strategy_follow" xml:space="preserve">
+    <value>⑤ TRIỂN KHAI THEO BỀ NGANG（TRIỂN KHAI SANG MODEL KHÁC, CÔNG ĐOẠN KHÁCH KHÁCH HÀNG KHÁC, NHÀ MÁY KHÁC)
+水 平 展 開 （他機種への水平展開）</value>
+  </data>
+  <data name="Title_Trace_Reason" xml:space="preserve">
+    <value>③TRUY TÌM NGUYÊN NHÂN（PHÁT SINH DO MÁY・TÁI NGHIỆM・PHÂN TÍCH TẠI SAO）
+原 因 の 究 明 (発生のメカニズム・再現テスト・ナゼナゼ分析)</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Lọt lỗi</value>
+  </data>
+  <data name="Occur" xml:space="preserve">
+    <value>Phát sinh</value>
+  </data>
+  <data name="Step" xml:space="preserve">
+    <value>Bước</value>
+  </data>
+  <data name="Title_Response_Occur_place" xml:space="preserve">
+    <value>⑥PHẢN HỒI NƠI PHÁT SINH （NỘI DUNG PHẢN ẢNH VÀO QUY ĐỊNH, CƠ CẤU)
+源流へのフィードバック （体制・仕組みへの反映内容）</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Doccument" xml:space="preserve">
+    <value>Mã tài liệu /書類番号</value>
+  </data>
+  <data name="Doc_Name" xml:space="preserve">
+    <value>Tên tài liệu / 書類名</value>
+  </data>
+  <data name="Doc_No" xml:space="preserve">
+    <value>Mã tài liệu/ 書類番号</value>
+  </data>
+  <data name="Doc_Type" xml:space="preserve">
+    <value>Chọn (Loại tài liệu)/ 選択（書類）</value>
+  </data>
+  <data name="Error1" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Infact" xml:space="preserve">
+    <value>Thực tế /実際</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Occur1" xml:space="preserve">
+    <value>Occur</value>
+  </data>
+  <data name="Part" xml:space="preserve">
+    <value>Công đoạn</value>
+  </data>
+  <data name="PIC" xml:space="preserve">
+    <value>PIC</value>
+  </data>
+  <data name="Plan" xml:space="preserve">
+    <value>Kế hoạch/　計画</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Chọn</value>
+  </data>
+  <data name="Label_IsPokayok" xml:space="preserve">
+    <value>Có áp dụng Pokayoke?</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="Require_Analysis_factor" xml:space="preserve">
+    <value>Cần nhập phân tích các yếu tố phát sinh</value>
+  </data>
+  <data name="Require_Confirm_artifact" xml:space="preserve">
+    <value>Cần nhập xác nhận hiện vật</value>
+  </data>
+  <data name="Require_Confirm_factor" xml:space="preserve">
+    <value>Cần nhập xác định yếu tố phát sinh</value>
+  </data>
+  <data name="Require_Create_date" xml:space="preserve">
+    <value>Cần nhập ngày lập</value>
+  </data>
+  <data name="Require_Customer" xml:space="preserve">
+    <value>Cần nhập khách hàng</value>
+  </data>
+  <data name="Require_Date_make" xml:space="preserve">
+    <value>Cần nhập ngày sản xuất</value>
+  </data>
+  <data name="Require_Model_group" xml:space="preserve">
+    <value>Cần nhập nhóm linh kiện</value>
+  </data>
+  <data name="Require_Model_name" xml:space="preserve">
+    <value>Cần nhập tên linh kiện</value>
+  </data>
+  <data name="Require_No" xml:space="preserve">
+    <value>Cần nhập mã quản lý</value>
+  </data>
+  <data name="Require_Number_NG" xml:space="preserve">
+    <value>Cần nhập số lượng NG</value>
+  </data>
+  <data name="Require_Number_test" xml:space="preserve">
+    <value>Cần nhập số lượng kiểm tra</value>
+  </data>
+  <data name="Require_Occur_content" xml:space="preserve">
+    <value>Cần nhập nội dung phát sinh</value>
+  </data>
+  <data name="Require_Occur_date" xml:space="preserve">
+    <value>Cần nhập ngày giờ phát sinh</value>
+  </data>
+  <data name="Require_Occur_frequency" xml:space="preserve">
+    <value>Cần nhập tần xuất phát sinh</value>
+  </data>
+  <data name="Require_Occur_place" xml:space="preserve">
+    <value>Cần nhập địa điểm phát sinh</value>
+  </data>
+  <data name="Require_Person_detect" xml:space="preserve">
+    <value>Cần nhập người phát hiện</value>
+  </data>
+  <data name="Require_Point_change" xml:space="preserve">
+    <value>Cần nhập điều tra điểm thay đổi</value>
+  </data>
+  <data name="Require_Retest" xml:space="preserve">
+    <value>Cần nhập tái thử nghiệm</value>
+  </data>
+  <data name="Require_Subject" xml:space="preserve">
+    <value>Cần nhập chủ đề</value>
+  </data>
+  <data name="Require_Type" xml:space="preserve">
+    <value>Cần nhập loại claim</value>
+  </data>
+  <data name="Title_Common_Info" xml:space="preserve">
+    <value>THÔNG TIN CHUNG CỦA CLAIM　クーレム情報</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="Field_Draft" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="Title_ Temporary_measures" xml:space="preserve">
+    <value>Biện pháp khắc phục tạm thời</value>
+  </data>
+  <data name="Title_Cause_occur" xml:space="preserve">
+    <value>Điều tra nguyên nhân phát sinh</value>
+  </data>
+  <data name="Title_Cause_outflow" xml:space="preserve">
+    <value>Điều tra nguyên nhân lọt lỗi</value>
+  </data>
+  <data name="Title_Containment_action" xml:space="preserve">
+    <value>Hành động  ngăn chặn tạm thời</value>
+  </data>
+  <data name="Title_Delivery_history" xml:space="preserve">
+    <value>Quá trình điều tra lịch sử xuất hàng</value>
+  </data>
+  <data name="Title_Outflow_countermeasures" xml:space="preserve">
+    <value>Biện pháp khắc phục cho lỗi bị lọt</value>
+  </data>
+  <data name="Title_result_check" xml:space="preserve">
+    <value>Kết quả kiểm tra</value>
+  </data>
+  <data name="Title_Root_Cause" xml:space="preserve">
+    <value>Nguyên nhân gốc</value>
+  </data>
+  <data name="Title_Stock_check_method" xml:space="preserve">
+    <value>Phương pháp kiểm tra và kết quả</value>
+  </data>
+  <data name="Title_Target_part_no" xml:space="preserve">
+    <value>Toàn bộ lô bị ảnh hưởng sàng lọc</value>
+  </data>
+  <data name="Field_Type_Form" xml:space="preserve">
+    <value>Loại Form　　フォーマット</value>
+  </data>
+  <data name="Title_Permanent_Corrective_ Action" xml:space="preserve">
+    <value>Hành động khắc phục và ngăn ngừa sự tái diễn</value>
+  </data>
+  <data name="Type_abnormal" xml:space="preserve">
+    <value>Abnormal Quality</value>
+  </data>
+  <data name="Form_BaoCao" xml:space="preserve">
+    <value>Người báo cáo bởi/ 報告部</value>
+  </data>
+  <data name="Form_Complete" xml:space="preserve">
+    <value>Trưởng bộ phận chất lượng phê duyệt/ QAマネージャ承認</value>
+  </data>
+  <data name="Form_PhatHanh" xml:space="preserve">
+    <value>Phát hành bởi/ 発行部</value>
+  </data>
+  <data name="Form_QAXacNhan" xml:space="preserve">
+    <value>QA xác nhận/ QA確認</value>
+  </data>
+  <data name="Form_TruongBP" xml:space="preserve">
+    <value>Trưởng bộ phận phát sinh phê duyệt/ 発生部のマネージャ承認</value>
+  </data>
+  <data name="Chart" xml:space="preserve">
+    <value>Biểu đồ</value>
+  </data>
+</root>

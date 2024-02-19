@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3c6506183b94a1ab7d93de069246808" Name="Diagram1">
+        <EntityTypeShape EntityType="ClaimFormModel.Department" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClaimFormModel.Notice" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClaimFormModel.Position" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClaimFormModel.Process" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClaimFormModel.ProcessList" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClaimFormModel.Role" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClaimFormModel.sysdiagram" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="ClaimFormModel.User" Width="1.5" PointX="3" PointY="5.125" />
+        <AssociationConnector Association="ClaimFormModel.FK_DepartmentUser" />
+        <AssociationConnector Association="ClaimFormModel.FK_UserNotice" />
+        <AssociationConnector Association="ClaimFormModel.FK_PositionUser" />
+        <AssociationConnector Association="ClaimFormModel.FK_RolesUser" />
+        <EntityTypeShape EntityType="ClaimFormModel.Claim" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="ClaimFormModel.NewestClaim" Width="1.5" PointX="7.375" PointY="11.25" />
+        <AssociationConnector Association="ClaimFormModel.FK__Claim__Create_by__33008CF0" />
+        <AssociationConnector Association="ClaimFormModel.FK__Claim__Modify_by__33F4B129" />
+        <AssociationConnector Association="ClaimFormModel.FK__Claim__ProcessLi__35DCF99B" />
+        <AssociationConnector Association="ClaimFormModel.FK_ClaimNotice" />
+        <EntityTypeShape EntityType="ClaimFormModel.TypeNG" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ClaimFormModel.Area" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ClaimFormModel.ODI" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ClaimFormModel.TargetPPM" Width="1.5" PointX="10.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
