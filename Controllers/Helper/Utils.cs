@@ -48,7 +48,8 @@ namespace FormProject.Controllers
                 string pathLocal = @"\Uploads\ImageNG\" + NG_Photo;
                 if (System.IO.File.Exists(path + NG_Photo))
                     return pathLocal;
-                var localPath = Utils.DownloadFile("172.28.10.17", @"VN\U34811", "hoan200794", path + NG_Photo, "/OQC/" + NG_Photo);
+               // var localPath = Utils.DownloadFile("172.28.10.17", @"VN\U34811", "hoan200794", path + NG_Photo, "/OQC/" + NG_Photo);
+                var localPath = Utils.DownloadFile("172.28.10.17", @"VN\share", "0FFP@ssw0rd", path + NG_Photo, "/OQC/" + NG_Photo);
                 return pathLocal;
             }
             catch (Exception e)

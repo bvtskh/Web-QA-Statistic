@@ -435,7 +435,7 @@ namespace FormProject.Controllers
                         listCustomer = listCustomer,
                         targets = targets,
                         listNGPhoto = listNGPhoto
-                    }, JsonRequestBehavior.AllowGet);
+                    }, JsonRequestBehavior.AllowGet); 
                 }
             }
             catch (Exception e)
