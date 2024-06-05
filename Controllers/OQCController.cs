@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime;
 using System.Web;
 using System.Web.Mvc;
 
@@ -171,18 +172,32 @@ namespace FormProject.Controllers
                     chart_view = chart_view.Trim();
                     var start = DateTime.Parse(startDate);
                     var end = DateTime.Parse(endDate);
-                    var targetPPM = 0;
-                    var target = db.TargetPPMs.Where(m => m.Area == "ALL").FirstOrDefault();
-                    if (target != null)
-                        targetPPM = target.Target;
+                    float targetPPM = 9; // mặc định
 
                     if (filter == "Area")
                     {
-                        target = db.TargetPPMs.Where(m => m.Area == value).FirstOrDefault();
-                        if (target != null)
-                            targetPPM = target.Target;
+                        if (value == "AUTO") targetPPM = PPM.AUTO;
+                        else
+                        {
+                            // nếu khoảng thời gian trong 1 tháng
+                            if(start.Month == end.Month)
+                            {
+                                targetPPM= PPM.ALL[start.Month-1];
+                            }
+                            else
+                            {
+                                targetPPM = 9;
+                            }
+                        }
+                        if (start.Year == 2024)
+                        {
+                            if (start.Month == 1 || start.Month == 2 || start.Month == 3)
+                            {
+                                targetPPM = 25;
+                            }
+                        }
                     }
-
+                   
                     var odiRes = new ODIResponsibility();
                     if (value == "ALL") value = "";
                     var defectionList = odiRes.odi_Defection(start, end, station, filter, value, db);
@@ -422,7 +437,57 @@ namespace FormProject.Controllers
                     stopwatch.Start();
                     var start = DateTime.Parse(startDate);
                     var end = DateTime.Parse(endDate);
-                    var targets = db.TargetPPMs.ToList();
+                    var target = 9; // Mặc định
+
+                    List<TargetPPM> targetPPMs = new List<TargetPPM>();
+                    TargetPPM targetAuto = new TargetPPM
+                    {
+                        ID = 1,
+                        Area = "AUTO",
+                        Target = PPM.AUTO
+                    };
+                    targetPPMs.Add(targetAuto);
+                    TargetPPM targetOA = new TargetPPM
+                    {
+                        ID = 2,
+                        Area= "OA"
+                     };
+                    TargetPPM targetID = new TargetPPM 
+                    {
+                         ID = 3,
+                         Area = "ID"
+                    };
+                    TargetPPM targetALL = new TargetPPM
+                    {
+                        ID = 4,
+                        Area = "ALL"
+                    };
+                    // nếu xem cùng ngày trong tháng
+                    if (start.Month == end.Month)
+                    {
+                        targetOA.Target = PPM.OA[start.Month - 1];                  
+                        targetID.Target = PPM.ID[start.Month - 1];
+                        targetALL.Target = PPM.ALL[start.Month - 1];
+                    }
+                    else
+                    {
+                        targetOA.Target = target;
+                        targetID.Target = target;
+                        targetALL.Target = target;
+                    }
+                    if(start.Year == 2024) 
+                    { 
+                        if(start.Month == 1 || start.Month == 2 || start.Month == 3)
+                        {
+                            targetOA.Target = 25;
+                            targetID.Target = 25;
+                            targetALL.Target = 25;
+                        }
+                    }
+                    targetPPMs.Add(targetOA);
+                    targetPPMs.Add(targetID);
+                    targetPPMs.Add(targetALL);
+                    
                     var odiRes = new ODIResponsibility();
                     var listData = odiRes.odi_DefectionByCus(start, end, station, db);
                     var listCustomer = db.Areas.Where(m => m.Area1 != Constants.All).GroupBy(m => m.Area1).Select(m => new { name = m.Key, list = m.ToList() }).ToList();
@@ -433,7 +498,7 @@ namespace FormProject.Controllers
                     {
                         listData = listData,
                         listCustomer = listCustomer,
-                        targets = targets,
+                        targets = targetPPMs,
                         listNGPhoto = listNGPhoto
                     }, JsonRequestBehavior.AllowGet); 
                 }

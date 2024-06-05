@@ -15,6 +15,6 @@ namespace FormProject.Database
         [StringLength(100)]
         public string Area { get; set; }
 
-        public int Target { get; set; }
+        public float Target { get; set; }
     }
 }

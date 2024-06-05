@@ -1,6 +1,7 @@
 ﻿using FormProject.Models;
 using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -177,5 +178,11 @@ namespace FormProject
 
         };
     }
-
+    public static class PPM
+    {
+        public static float AUTO = 3;
+        public static List<float> OA = new List<float> { 9, 9, 9, 23, 23, 23, 18.3f, 18.3f, 18.3f, 13.7f, 13.7f, 13.7f }; // tháng 1->12
+        public static List<float> ID = new List<float> { 9, 9, 9, 23, 23, 23, 18.3f, 18.3f, 18.3f, 13.7f, 13.7f, 13.7f };
+        public static List<float> ALL = new List<float> { 9, 9, 9, 23, 23, 23, 18.3f, 18.3f, 18.3f, 13.7f, 13.7f, 13.7f };
+    }
 }

@@ -452,6 +452,7 @@ function settingChartDefection(listCustomer, listData, targets, listNGPhoto) {
                                     var ngInfo = listNGPhoto.filter(m => m.Customer == listCustomer.customer && m.Defection.trim() == defection)
                                     var numberImageinRow = 2;
                                     $('#listImageNG').empty()
+                                    document.getElementById("exampleModalLongTitle").innerText = "Hình ảnh NG: " + defection;
                                     for (var ngIndex = 0; ngIndex < ngInfo.length; ngIndex = ngIndex + numberImageinRow) {
                                         var rowImage = $('<div />', {
                                             class: 'row'

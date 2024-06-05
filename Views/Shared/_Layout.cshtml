@@ -36,11 +36,11 @@
 
         <!-- Sidebar -->
 
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul style ="background-color:dodgerblue"class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="nav-link" href="#">
-                <img class="img-profile" src="~/Resources/logo.png">
+                <img style="padding:5px 10px 10px 15px;" class="img-profile" src="~/Resources/logo.png">
                 @if (HttpContext.Current.Session["User"] != null)
                 {
                     <span class="mr-2 d-none d-lg-inline text-white small ml-3">@(FormProject.Resource.Hello + " " + user.Name)</span>
@@ -53,7 +53,7 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <div style="color: wheat; font-size: 12px" class="sidebar-heading colo">
                 Cài đặt tài khoản
             </div>
 
@@ -155,7 +155,7 @@
             }
             <input type="hidden" value="@ViewBag.Filter" id="filter" />
             <hr class="sidebar-divider d-none d-md-block">
-            <div class="sidebar-heading">
+            <div style="color:wheat; font-size:12px" class="sidebar-heading">
                 Thông tin OQC
             </div>
             <li class="nav-item" name="@Constants.OQCChart">
